@@ -1,0 +1,18 @@
+#tittel {
+    color: blue;
+}
+h1 {
+    font-weight: normal;
+}
+a {
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    background-color: rgba(125, 125, 125, 0.5);
+    font-weight: normal;
+}
+body {
+    text-align: center;
+    background-image: repeating-linear-gradient(90deg,yellow,orange,red,orange,red,yellow);
+}
