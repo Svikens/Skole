@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinley Management</title> <!-- Setter "tabben" sin tittel til Kinley Management-->
+    <link rel="stylesheet" href="stylesheet.css"><!-- lenker CSS koden til html dokumentet -->
+    <link href="http://fonts.cdnfonts.com/css/basis-grotesque-pro" rel="stylesheet">
+    <!-- Henter en skrittype som er hentet fra internet-->
+    <link href="http://fonts.cdnfonts.com/css/goldman-sans" rel="stylesheet">
+    <!-- Henter en skrittype som er hentet fra internet-->
+    <style>
+        #divForLogo {
+            float: left;
+        }
+
+        #googleMaps {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            border-bottom: 2px solid #192e47;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="Meny">
+        <!-- En div for menyen på toppen av nettsiden. -->
+        <div id="divForLogo">
+            <!-- en div for logoen -->
+            <a href="./index.html"><img src="Bilder/ok2-kopi.png" alt="Kinley" width="185"></a>
+            <!-- Legger logoen inne i et anchor element som sender deg til startsiden. Dette gjør at man kan trykke på logoen og komme til startsiden -->
+        </div>
+        <div id="divKnapp">
+            <!-- lager en div for en anchor -->
+            <a id="monthlyPortfolioKnapp" href="./maanedsportefolje.html">Monthly Portfolio</a>
+            <!-- lager et anchor med "Monthly Portfolio" som klikkbar tekst. Denne sender deg til monthly portfolio siden.-->
+        </div>
+        <div id="varselOmInnlogging">
+            <!-- Lager en div for varslingen -->
+            <div id="varselOmInnloggingDiv">
+                <!-- lager en div for selve varselsteksten -->
+                <p class="undertekster"><a id="serverSender" href="availableServers.html">Due to active DDOS
+                        attacks, our client login is currently not available. <br> Check if our server are
+                        available.</a></p>
+                <!-- Lager et paragraph med klikkbar tekst som sender deg til de server siden til Kinley -->
+            </div>
+        </div>
+    </div>
+    <div class="hoved">
+        <!-- lager en div for startbildet og litt tekst -->
+        <div id="forsteBakgrunnsBilde">
+            <!-- div for bakgrunnsbilde -->
+            <img id="blåStrekerBilde" src="./Bilder/Background.webp" alt=""> <!-- legger inn bilder -->
+            <div id="introduksjon">
+                <!-- div for teksten på bildet -->
+                <p id="kinleyAssetsManagement"> Assets Management</p> <!-- tekst -->
+                <h1 id="medOss"> Build, optimize, and manage<br> your investment portfolio<br> with us</h1>
+                <!-- litt mer tekst som har <br> i seg for å dele teksten opp i linjer/starter på ny linje. -->
+                <p class="undertekster"> We currenctly have <i>US$407</i> million AUM</p>
+                <!-- tekst som med en del av den i italic -->
+                <a class="ExploreKnapp" href="#bunnMeny">Explore</a>
+                <!-- lager en anchor med Explore som klikkbar tekst, ble ikke helt ferdig med Explore nettsiden -->
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <!-- div for info under startbilde -->
+        <h1 id="utforskkinley">Discover Kinley</h1> <!-- tittel -->
+        <p class="undertekster"> Our clients come first. We serve them sustainable economic growth and financial
+            opportunity.</p> <!-- tekst -->
+    </div>
+    <div>
+        <!-- div for bilder og klikkbare knapper som gjør at du kan velge om du er et firma eller enkelperson -->
+        <div id="selskaper">
+            <!-- div for selskap siden -->
+            <button onclick="corpBilde()" class="velgTypePerson">
+                <!-- lager en knapp som du kan trykke på, men man kan bare trykke på teksten. Her kommer det bilder som er mer relevant for selskaper -->
+                <span id="corptittel" style="font-size: 24px;">Corporations & Institutions &#10148;</span>
+                <!-- dette er teksten man må trykke på. "&#10148 er en pil" -->
+                <span id="corptittel2" style="display:none;font-size: 24px;">Corporations & Institutions ▼ </span>
+                <!-- Denne vises når du har trykket på teksten over, sånn at det ser ut som en dropdown meny. Her peker pilen nedover -->
+            </button>
+        </div>
+        <div id="enkeltpersoner">
+            <!-- div for enkeltperson siden -->
+            <button onclick="individBilde()" class="velgTypePerson">
+                <!-- lager en knapp, man må trykke på teksten her også. Når du trykker så kommer det bilder mer relevant for individer-->
+                <span id="individualtittel" style="font-size: 24px;">Individual investors &#10148;</span>
+                <!-- dette er den første tittelen, når du trykker på denne teksten, så kommer den tittelen som er under denne linjen -->
+                <span id="individualtittel2" style="display: none;font-size: 24px;">Individual investors ▼</span>
+                <!--  denne tittelen kommer når du trykker på teksten over, så ser det ut som en dropdown meny -->
+            </button>
+        </div>
+    </div>
+    <div>
+        <div id="techBildeDiv">
+            <!-- Bildene til venstre når du trykker på knappene over-->
+            <img id="techBilde" src="https://new-media.dhakatribune.com/en/uploads/2022/09/13/bigstock-150079445.jpeg"
+                alt="bilde av tech"><!-- bilde av tech, dette bildet er der når ingen av knappene over er aktive -->
+            <img id="corps" style="display:none;" src="./Bilder/corporateBilde1.png"
+                alt="bilde av personer i et kontor">
+            <!-- 1 av 2 bilder når du trykker på "corporations & institutions" -->
+            <img id="leverage" style="display:none;"
+                src="https://alongtheboards.com/wp-content/uploads/2020/09/Leverage-Forex-1-750x483.jpg"
+                alt="bilde av leverage"> <!-- 1 av 2 bilder når du trykker på "individual investor" -->
+        </div>
+        <div id="bildeAvToMennDiv">
+            <!-- Bildene til høyre når du trykker på knappene over-->
+            <img id="bildeAvToMenn"
+                src="https://www.oaklins.com/uploads/sites/49/2022/06/Oaklins-Deals-Jurg-Stucker-Nikolaos-Karabelas.opt_-1-scaled.jpg"
+                alt="bilde av menn som diskuterer"> <!-- Bildet til høyre når ingen av knappene er aktive -->
+            <img id="corps2" src="https://cdn.corporatefinanceinstitute.com/assets/corporation.jpg"
+                alt="bilde av kontorer" style="display:none;">
+            <!-- 2 av 2 bilder når du trykker på "corporations & institutions" -->
+            <img id="bildeAvInvestor" style="display:none;"
+                src="https://researchtreefilesprod.blob.core.windows.net/publicimages/730793b7-b011-4379-aeb8-9f12f1456858-D-shutterstock_204816103_c.jpg"
+                alt="bilde av investor"><!-- 2 av 2 bilder når du trykker på "individual investor" -->
+        </div>
+    </div>
+    <div id="bunnMeny">
+        <!-- div for menyen på bunn -->
+        <div style="height:50%;width: 100%;background-color:#192e47;"></div>
+        <!-- en liten boks som er halve div-en, for å gjøre den mer kontrollerbar -->
+        <div style="height:50%;width: 100%;background-color:#2a4d79;">
+            <!-- andre halvparten av div-en -->
+            <div>
+                <!-- div inni div-en -->
+                <p style="position:relative;left:10px"><span style="font-weight: bold;">Adresse:</span> Dronning Mauds
+                    gate 3, 0115 Oslo</p>
+                <!-- tekst med addressen. Adresse er fet skrift -->
+                <p style="position:relative;left:10px"><span style="font-weight: bold;">Telefon:</span> +47 931 76 363
+                    <a id="googleMaps" target="_blank"
+                        href="https://www.google.com/maps/place/Dronning+Mauds+gate+3,+0250+Oslo/@59.9127078,10.7223591,15z/data=!4m5!3m4!1s0x46416e8091177a4d:0x700d6446c099ef04!8m2!3d59.9126666!4d10.7293373">
+                        Veibeskrivelser</a>
+                    <iframe style="float:right; position: relative;bottom:33px;right:630px;overflow:hidden;border:0;"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.1734149964032!2d10.727148615966845!3d59.91266927115545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e8091177a4d%3A0x700d6446c099ef04!2sDronning%20Mauds%20gate%203%2C%200250%20Oslo!5e0!3m2!1sno!2sno!4v1664446820352!5m2!1sno!2sno"
+                        width="400" height="58" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </p>
+                <!-- tekst med telefon. Telefon er fet skritft -->
+            </div>
+        </div>
+    </div>
+
+    <script> /* javascript */
+
+        function corpBilde() { /* lager den første funksjonen, som er for når du trykker på "corporations & institutions" teksten */
+            /* denne delen gjør at bildene til "corporations & institutions" vises når du trykker på den for første gang, og går bort når du trykker igjen. Den gjør også at pilen til teksten endres, sonn at det ser ut som en dropdown menu. */
+            var leverage = document.getElementById("leverage"); /* lager en variabel som er lik Id-en leverage. assa et element */
+            var corp = document.getElementById("corps"); /* lager en variabel som er lik ID-en corps. assa et element */
+            if (leverage.style.display === "none") { /* sjekker at ikke "individual investor" knappen er aktiv" Hvis den ikke er det så vises bildene, hvis den er det, så skjer ingenting */
+                if (corp.style.display === "none") {/* en if løkke som sier at "når corp-elementet har style="display:none;" så utfør løkken, hvis svaret er nei, så utfør else */
+                    corp.style.display = "block"; /* endrer stylen til elmentet med id ="corp" fra style ="display:none;" til style = "display:block;". Dette gjør at elementet vises */
+                } else {
+                    corp.style.display = "none"; /* endrer stylen til elmentet med id ="corp" fra style ="display:block;" til style = "display:none;". Dette gjør at elementet ikke vises */
+                }
+                /* herfra repeteres det flere ganger */
+                var corp2 = document.getElementById("corps2");
+                if (corp2.style.display === "none") {
+                    corp2.style.display = "block";
+                } else {
+                    corp2.style.display = "none";
+                }
+                /* denne delen bytter hvilken tittel som skal vises, for å få det til å virke som at det er en dropdown menu */
+                var corptittel = document.getElementById("corptittel");
+                if (corptittel.style.display === "none") {
+                    corptittel.style.display = "block";
+                } else {
+                    corptittel.style.display = "none";
+                }
+                var corptittel2 = document.getElementById("corptittel2");
+                if (corptittel2.style.display === "none") {
+                    corptittel2.style.display = "block";
+                } else {
+                    corptittel2.style.display = "none";
+                }
+                /* denne delen av funksjonen sjekker om "corporations & institution" knappen er aktiv. Hvis den ikke er det så vises de bildene som vises helt i starten når du åpner nettsiden */
+                var techBilde = document.getElementById("techBilde"); /* Finner id techBilde og setter den til variabelen techBilde */
+                if (corp.style.display === "none") {
+                    techBilde.style.display = "block";
+                } else {
+                    techBilde.style.display = "none";
+                }
+                var toMenn = document.getElementById("bildeAvToMenn");
+                if (corp.style.display === "none") {
+                    toMenn.style.display = "block";
+                } else {
+                    toMenn.style.display = "none";
+                }
+            }
+            else { /* gjør at du kan trykke på individual investor, selv om du ikke har lukket/rullet opp menyen fra corporations & institutions */
+                /* Dette er akkurat den samme basic javascript koden som i if-løkken over, bare at if (leverage.style.display === "none") er tatt bort, og koden er satt i en annen rekkefølge sånn at den virker */
+                if (leverage.style.display === "none") {
+                    leverage.style.display = "block";
+                } else {
+                    leverage.style.display = "none";
+                }
+                var bildeAvInvestor = document.getElementById("bildeAvInvestor");
+                if (bildeAvInvestor.style.display === "none") {
+                    bildeAvInvestor.style.display = "block";
+                } else {
+                    bildeAvInvestor.style.display = "none";
+                }
+                var individualtittel = document.getElementById("individualtittel");
+                if (individualtittel.style.display === "none") {
+                    individualtittel.style.display = "block";
+                } else {
+                    individualtittel.style.display = "none";
+                }
+                var individualtittel2 = document.getElementById("individualtittel2");
+                if (individualtittel2.style.display === "none") {
+                    individualtittel2.style.display = "block";
+                } else {
+                    individualtittel2.style.display = "none";
+
+                }
+                if (corp.style.display === "none") {/* en if løkke som sier at "når corp-elementet har style="display:none;" så utfør løkken, hvis svaret er nei, så utfør else */
+                    corp.style.display = "block"; /* endrer stylen til elmentet med id ="corp" fra style ="display:none;" til style = "display:block;". Dette gjør at elementet vises */
+                } else {
+                    corp.style.display = "none"; /* endrer stylen til elmentet med id ="corp" fra style ="display:block;" til style = "display:none;". Dette gjør at elementet ikke vises */
+                }
+                /* herfra repeteres det flere ganger */
+                var corp2 = document.getElementById("corps2");
+                if (corp2.style.display === "none") {
+                    corp2.style.display = "block";
+                } else {
+                    corp2.style.display = "none";
+                }
+                /* denne delen bytter hvilken tittel som skal vises, for å få det til å virke som at det er en dropdown menu */
+                var corptittel = document.getElementById("corptittel");
+                if (corptittel.style.display === "none") {
+                    corptittel.style.display = "block";
+                } else {
+                    corptittel.style.display = "none";
+                }
+                var corptittel2 = document.getElementById("corptittel2");
+                if (corptittel2.style.display === "none") {
+                    corptittel2.style.display = "block";
+                } else {
+                    corptittel2.style.display = "none";
+                }
+                /* denne delen av funksjonen sjekker om "corporations & institution" knappen er aktiv. Hvis den ikke er det så vises de bildene som vises helt i starten når du åpner nettsiden */
+                var techBilde = document.getElementById("techBilde"); /* Finner id techBilde og setter den til variabelen techBilde */
+                if (corp.style.display === "none") {
+                    techBilde.style.display = "block";
+                } else {
+                    techBilde.style.display = "none";
+                }
+                var toMenn = document.getElementById("bildeAvToMenn");
+                if (corp.style.display === "none") {
+                    toMenn.style.display = "block";
+                } else {
+                    toMenn.style.display = "none";
+                }
+            }
+
+        }
+        function individBilde() { /* funksjon for når du trykker på "individual investor" teksten */
+            var leverage = document.getElementById("leverage"); /* Finner id corps og setter den til variabelen corp */
+            var corp = document.getElementById("corps");
+            /* denne funksjonen er helt lik den over */
+            if (corp.style.display === "none") {
+                if (leverage.style.display === "none") {
+                    leverage.style.display = "block";
+                } else {
+                    leverage.style.display = "none";
+                }
+                var bildeAvInvestor = document.getElementById("bildeAvInvestor");
+                if (bildeAvInvestor.style.display === "none") {
+                    bildeAvInvestor.style.display = "block";
+                } else {
+                    bildeAvInvestor.style.display = "none";
+                }
+                var techBilde = document.getElementById("techBilde"); /* Finner id techBilde og setter den til variabelen techBilde */
+                if (leverage.style.display === "none") {
+                    techBilde.style.display = "block";
+                } else {
+                    techBilde.style.display = "none";
+                }
+                var toMenn = document.getElementById("bildeAvToMenn");
+                if (leverage.style.display === "none") {
+                    toMenn.style.display = "block";
+                } else {
+                    toMenn.style.display = "none";
+                }
+                var individualtittel = document.getElementById("individualtittel");
+                if (individualtittel.style.display === "none") {
+                    individualtittel.style.display = "block";
+                } else {
+                    individualtittel.style.display = "none";
+                }
+                var individualtittel2 = document.getElementById("individualtittel2");
+                if (individualtittel2.style.display === "none") {
+                    individualtittel2.style.display = "block";
+                } else {
+                    individualtittel2.style.display = "none";
+
+                }
+            }
+            else {/* gjør at du kan trykke på corporations & institutions, selv om du ikke har lukket/rullet opp menyen fra corporations & institutions */
+                /* Dette er akkurat den samme basic javascript koden som i if-løkken over, bare at if (corp.style.display === "none") er tatt bort, og koden er satt i en annen rekkefølge sånn at den virker */
+                if (corp.style.display === "none") {/* en if løkke som sier at "når corp-elementet har style="display:none;" så utfør løkken, hvis svaret er nei, så utfør else */
+                    corp.style.display = "block"; /* endrer stylen til elmentet med id ="corp" fra style ="display:none;" til style = "display:block;". Dette gjør at elementet vises */
+                } else {
+                    corp.style.display = "none"; /* endrer stylen til elmentet med id ="corp" fra style ="display:block;" til style = "display:none;". Dette gjør at elementet ikke vises */
+                }
+                /* herfra repeteres det flere ganger */
+                var corp2 = document.getElementById("corps2");
+                if (corp2.style.display === "none") {
+                    corp2.style.display = "block";
+                } else {
+                    corp2.style.display = "none";
+                }
+                /* denne delen bytter hvilken tittel som skal vises, for å få det til å virke som at det er en dropdown menu */
+                var corptittel = document.getElementById("corptittel");
+                if (corptittel.style.display === "none") {
+                    corptittel.style.display = "block";
+                } else {
+                    corptittel.style.display = "none";
+                }
+                var corptittel2 = document.getElementById("corptittel2");
+                if (corptittel2.style.display === "none") {
+                    corptittel2.style.display = "block";
+                } else {
+                    corptittel2.style.display = "none";
+                }
+                if (leverage.style.display === "none") {
+                    leverage.style.display = "block";
+                } else {
+                    leverage.style.display = "none";
+                }
+                var bildeAvInvestor = document.getElementById("bildeAvInvestor");
+                if (bildeAvInvestor.style.display === "none") {
+                    bildeAvInvestor.style.display = "block";
+                } else {
+                    bildeAvInvestor.style.display = "none";
+                }
+                var techBilde = document.getElementById("techBilde"); /* Finner id techBilde og setter den til variabelen techBilde */
+                if (leverage.style.display === "none") {
+                    techBilde.style.display = "block";
+                } else {
+                    techBilde.style.display = "none";
+                }
+                var toMenn = document.getElementById("bildeAvToMenn");
+                if (leverage.style.display === "none") {
+                    toMenn.style.display = "block";
+                } else {
+                    toMenn.style.display = "none";
+                }
+                var individualtittel = document.getElementById("individualtittel");
+                if (individualtittel.style.display === "none") {
+                    individualtittel.style.display = "block";
+                } else {
+                    individualtittel.style.display = "none";
+                }
+                var individualtittel2 = document.getElementById("individualtittel2");
+                if (individualtittel2.style.display === "none") {
+                    individualtittel2.style.display = "block";
+                } else {
+                    individualtittel2.style.display = "none";
+
+                }
+            }
+        }
+        var startSrollPosisjon = window.pageYOffset; /* definerer variabelen startSrollPosisjon til window.pageYOffset, som er hvor mye nedover på nettsiden din skjerm er */
+        window.onscroll = function () { /* definerer funnksjonen som skal kjøres når du scroller, derfor window.onscroll */
+            var naaScrollPosisjon = window.pageYOffset; /* setter variabelen naaScrollPosisjon til window.pageYOffset, som skjer hele tiden mens du scroller på nettsiden */
+            if (startSrollPosisjon + 140 > naaScrollPosisjon) { /* sier at så lenge startSrollPosisjon, som er hvor du er på nettsiden, + 140 er større enn naaScrollPosisjon så vis innloggingsvarselet, men når naaScrollPosisjon er større enn startSrollPosisjon + 140 så kjøres else-løkken og da vises ikke varselen lengere */
+                document.getElementById("varselOmInnlogging").style.display = "block;"; /* setter display til varselOmInnlogging til block, som gjør at den vises */
+            } else {
+                document.getElementById("varselOmInnlogging").style.display = "none"; /* setter display til varselOmInnlogging til none, som gjør at den ikke vises */
+            }
+        }
+
+    </script>
+
+</body>
+
+
+</html>
