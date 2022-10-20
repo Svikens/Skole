@@ -1,0 +1,24 @@
+body {
+    text-align: center;
+    background-color: lightslategrey;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    border: 2px solid white;
+    padding: 3px;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    width: 200px;
+    margin-top: 3px;
+    align-self: center;
+}
+
+a:hover {
+    transform: scale(1.2);
+}
+
+h1 {
+    color: white;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+}
