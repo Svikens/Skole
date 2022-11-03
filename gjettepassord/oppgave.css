@@ -1,0 +1,28 @@
+body {
+    background-image: url(https://media.newyorker.com/photos/590966ee1c7a8e33fb38d6cc/master/w_2560%2Cc_limit/Nissan-Universe-Shouts.jpg);
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+#altInnholdet {
+position: relative;
+top: 200px;
+color: black;
+}
+
+#loginKnapp{
+    height: 30px;
+    width: 100px;
+    background-color: wheat;
+}
+
+#passord {
+    height: 30px;
+    background-color: wheat;
+    color: white;
+}
+
+#svar {
+    font-size: larger;
+    background-color: wheat;
+}
