@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.11.2022</title>
+
+
+    <style>
+        body {
+            background-color: #121212;
+            color: whitesmoke;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button onclick="tilfedligHilsen()">Tilfeldig hilsen</button>
+    <br>
+    <input id="kvadratInput" type="text" placeholder="tallet">
+    <button onclick="kvadrat(document.getElementById('kvadratInput').value)">Kvadrattallet</button>
+    <br>
+    <input id="gangetabellenInput" type="text" placeholder="Gangeren">
+    <button onclick="skrivUtGangeabell(document.getElementById('gangetabellenInput').value)">Gangetabellen</button>
+    <br>
+    <input id="arealRektangelInput" type="text" placeholder="bredde">
+    <input id="arealRektangelInput2" type="text" placeholder="lengde">
+    <button
+        onclick="document.getElementById('arealRektangelDiv').innerHTML = 'Arealet av rektangelet er: ' + arealRektangel(document.getElementById('arealRektangelMedFeilInput').value, document.getElementById('arealRektangelMedFeilInput2').value)+ '.'">Areal</button>
+    <br>
+    <input id="arealRektangelMedFeilInput" type="text" placeholder="bredde">
+    <input id="arealRektangelMedFeilInput2" type="text" placeholder="lengde">
+    <button
+        onclick="document.getElementById('arealRektangelMedFeilDiv').innerHTML = 'Arealet av rektangelet er: ' + arealRektangelMedFeil(document.getElementById('arealRektangelMedFeilInput').value, document.getElementById('arealRektangelMedFeilInput2').value)+'.'">Areal(sjekker
+        for feil)</button>
+    <br>
+    <input id="alderSjekkerInput" type="text" placeholder="Navn">
+    <input id="alderSjekkerInput2" type="number" placeholder="Alder">
+    <button
+        onclick="alderSjekker(document.getElementById('alderSjekkerInput').value, parseInt(document.getElementById('alderSjekkerInput2').value))">Aldersjekker</button>
+    <br>
+    <input id="sumTall1" type="text" placeholder="1. Tall">
+    <input id="sumTall2" type="text" placeholder="2. Tall">
+    <button
+        onclick="sum(document.getElementById('sumTall1').value, document.getElementById('sumTall2').value)">Summer</button>
+
+    <p id="tilfedligHilsenDiv"></p>
+    <p id="kvadratDiv"></p>
+    <p id="sumDiv"></p>
+    <p id="arealRektangelDiv"></p>
+    <p id="arealRektangelMedFeilDiv"></p>
+    <p id="gangetabellenTekst"></p>
+    <p id="alderSjekkerText"></p>
+
+
+
+    <script>
+        /* Oppgave 3 */
+        function tilfedligHilsen() {
+            let randomizer = parseInt(Math.random() * 3)
+            if (randomizer == 2) {
+                document.getElementById("tilfedligHilsenDiv").innerHTML = "Hei";
+            }
+            else if (randomizer == 1) {
+                document.getElementById("tilfedligHilsenDiv").innerHTML = "Hallo";
+            }
+            else {
+                document.getElementById("tilfedligHilsenDiv").innerHTML = "God dag";
+            }
+        }
+
+        /* Oppgave 2 */
+
+        function kvadrat(a) {
+            document.getElementById("kvadratDiv").innerHTML = "Kvadrattallet er: " + a * a;
+        }
+
+        /* Oppgave 3 */
+
+        function sum(a, b) {
+            summen = parseFloat(a) + parseFloat(b);
+            document.getElementById("sumDiv").innerHTML = "Summen av tallene er: " + summen;
+        }
+
+        // Oppgave 4 
+
+        function skrivUtGangeabell(tall) {
+            if (tall > 0) {
+                var svar;
+                i = 1;
+                while (i < 10) {
+                    svar += String(tall * i + ",");
+                    i++;
+                }
+                svar += String(tall * 10 + ".");
+                document.getElementById("gangetabellenTekst").innerHTML = `Gangetabellen til ${tall} er: ` + svar.slice(9, svar.length);
+            }
+            else {
+                document.getElementById("gangetabellenTekst").innerHTML = "Tallet kan ikke være 0 eller minus";
+            }
+        }
+
+        // Oppgave 5
+        function arealRektangel(lengde, bredde) {
+            areal = lengde * bredde;
+            return areal;
+        }
+
+
+        // Oppgave 6
+
+        var areal2;
+        function arealRektangelMedFeil(lengde, bredde) {
+            if (lengde <= 0) {
+                return "Lengden har en umulig størrelse";
+            }
+            else if (bredde <= 0) {
+                return "Bredden har en umulig størrelse";
+            }
+            else {
+                areal2 = lengde * bredde;
+                return areal2;
+            }
+        }
+
+        // Oppgave 7
+
+        function alderSjekker(navn, alder) {
+            if (alder < 30) {
+                document.getElementById("alderSjekkerText").innerHTML = `Hei ${navn}, du er ung.`;
+            }
+            else {
+                document.getElementById("alderSjekkerText").innerHTML = `Du er gammel`;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
