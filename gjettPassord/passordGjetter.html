@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjett Passordet</title>
+    <link rel="stylesheet" href="./passordGjetter.css">
+</head>
+
+<body>
+    <div id="altInnholdet">
+        <input id="passord" type="password" placeholder="Gjett passord">
+        <button id="loginKnapp" type="button" onclick="passordGjett()">Gjett</button>
+        <p id="svar"></p>
+    </div>
+    <script>
+        let passord = "QuePasa"
+        function passordGjett() {
+            let gjettetPassord = document.getElementById("passord").value
+            if (gjettetPassord == passord) {
+                document.getElementById("svar").innerHTML = "Du gjettet riktig"
+            }
+            else if (gjettetPassord == "") { }
+            else if (gjettetPassord == "?lengde") {
+                document.getElementById("svar").innerHTML = passord.length
+            }
+            else if (gjettetPassord == "?1") {
+                document.getElementById("svar").innerHTML = passord[0]
+            }
+            else if (gjettetPassord == "?2") {
+                document.getElementById("svar").innerHTML = passord[1]
+            }
+            else if (gjettetPassord == "?siste") {
+                const sistefra3 = passord.slice(2, passord.length - 1);
+                document.getElementById("svar").innerHTML = sistefra3
+            }
+            else if (gjettetPassord == "?store") {
+                document.getElementById("svar").innerHTML = passord.toUpperCase()
+            }
+            else if (gjettetPassord == "?små") {
+                document.getElementById("svar").innerHTML = passord.toLowerCase()
+            } else {
+                document.getElementById("svar").innerHTML = "Du gjettet feil"
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

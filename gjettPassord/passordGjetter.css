@@ -1,0 +1,33 @@
+body {
+    background-image: url(./gjettPassordGRÅ.png);
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+#altInnholdet {
+position: relative;
+top: 200px;
+color: black;
+}
+
+#loginKnapp{
+    height: 30px;
+    width: 100px;
+    background-color: black;
+}
+
+#passord {
+    height: 30px;
+    background-color: black;
+    color: whitesmoke;
+}
+
+#svar {
+    font-size: larger;
+    color: whitesmoke;
+    background-color: black;
+}
+
+#alertBox {
+    background: black;
+}
