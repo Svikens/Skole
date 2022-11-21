@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Scholar</title>
+    <link rel="stylesheet" href="./skScholar.css">
+<link href="http://fonts.cdnfonts.com/css/goldman-sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body id="bodyy" onload="lastInnTekst();">
+
+    <div id="lasterInnDiv">
+        <div id="lasterInnTekst">SK Scholar</div>
+    </div>
+
+    </div>
+    <div class="divs" id ="listeOverTemaer">
+        <div>how we Learn</div>
+        <div><strike>how we Express</strike></div>
+        <div><a style="text-decoration: none;color:whitesmoke;" href="./projects/projekter.html">our Projects</a></div>
+    </div>
+    <div id="regnDiv">
+        <div  style="writing-mode:vertical-lr;text-orientation:mixed;text-align: right;" id="by"><a id="sindreKnapReferanse" onclick="lastInnAndreSide()">S.K</a><br>BY&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+    </div>
+    <script>
+        function lastInnTekst(){
+            var lasterInnTekst = document.getElementById("lasterInnTekst");
+            lasterInnTekst.style.animation ="tekstLoading 5s";
+        }
+        const myTimeout = setTimeout(hovedLastInnAnimasjon, 5000);
+        function hovedLastInnAnimasjon(){
+            var listeOverTemaer = document.getElementById("listeOverTemaer");
+            listeOverTemaer.style.animation = "altVisesSakte 5s";
+        }
+
+        const myTimeout2 = setTimeout(lastInnAnimasjon, 5000);
+        function lastInnAnimasjon(){
+            var lasterInnDiv = document.getElementById("lasterInnDiv");
+            lasterInnDiv.style.display = "none";
+        }
+
+        const myTimeout3 = setTimeout(hovedLastInnAnimasjon2, 5000);
+        function hovedLastInnAnimasjon2(){
+            var regnDiv = document.getElementById("regnDiv");
+            regnDiv.style.animation = "altVisesSakte2 5s";
+        }
+
+
+        function lastInnAndreSide(){
+            document.getElementById("bodyy").style.animation = "altBlirBorte 3s"
+            setTimeout(function(){document.location.href="./SindreKnap/sk.html"}, 3000);
+        }
+    </script>
+
+</body>
+
+</html>
