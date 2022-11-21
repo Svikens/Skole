@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKUDDÅR</title>
+
+    <style>
+        body > input {
+            background-color: transparent;
+            color: whitesmoke;
+        }
+        body > button {
+            background-color: transparent;
+            color: whitesmoke;
+        }
+        body > p {
+            background-color: transparent;
+            color: whitesmoke;
+        }
+    </style>
+
+</head>
+<body style="background-image: url(./skuddar.jpg);background-size: cover;background-repeat: no-repeat;">
+    <input type="number" id="input"  placeholder="Ditt år">
+    <button type="button" onclick="skuddArSjekk()" style="height:30px;width: 30px;"></button>
+    <p id="svar"></p>
+    <script>
+        function skuddArSjekk() {
+        var sisteSkuddAar = 2020;
+        var dittAar = parseInt(document.getElementById('input').value);
+        console.log(dittAar);
+        if(dittAar/4 == parseInt(dittAar/4)){
+            console.log("Skudd År");
+            document.getElementById("svar").innerHTML = "Det er skuddår det året";
+        }
+        else{
+            document.getElementById("svar").innerHTML = "Det er ikke skuddår det året";
+        }
+        }
+    </script>
+</body>
+</html>
