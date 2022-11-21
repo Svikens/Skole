@@ -1,0 +1,468 @@
+#Meny {
+    /* dette er css koden for menyen på toppen av nettsidene */
+    height: 100px;
+    width: 100%;
+    background-color: white !important;
+    position: sticky !important;
+    /* dette gjør at menyen følger når du scroller, men også at den går over alle andre elementer (pga prioriteting av positions). Alle andre positions jeg har brukt, er lavere prioritert */
+    top: 0;
+    left: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* css koden for body */
+    background-color: #192e47;
+    margin: 0;
+    /* gjør at div elementene kan være helt inntil kanten av nettsiden */
+    padding: 0;
+}
+
+.hoved {
+    /* dette er css koden for #førsteBakgrunnsBilde sin div */
+    margin-bottom: 82px;
+    /* gjør at bildet ikke ligger under menyen på toppen av nettsiden */
+    width: 100%;
+    height: 950px;
+    /* velger høyden på bagrunnsbilde sin div */
+}
+
+#forsteBakgrunnsBilde {
+    /* dette er css koden for bakgrunnsbilde på første side sin div */
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    margin-left: 0px;
+    position: inherit;
+
+    /* gjør at bildet ligger under menyen på toppen av nettsiden */
+}
+
+#blåStrekerBilde {
+    /* dette er css koden for selve bakgrunnsbilde */
+    width: 100%;
+    right: 0px;
+    margin-left: 0px;
+    height: 950px;
+    /* velger høyden på bagrunnsbilde */
+}
+
+.ExploreKnapp {
+    /* css koden til explore knappen under teksten på startsiden */
+    width: 12%;
+    border: 1px solid white;
+    background-color: transparent;
+    /* får bort bakgrunnsfargen til knapper */
+    font-family: 'Goldman Sans', sans-serif;
+    /* velger en skrifttype som er hentet fra en nettside, derfor har den '' rundt seg, og backup er sans-serif */
+    font-size: 16px;
+    /* skriftsstørrelse */
+    padding-left: 10px;
+    /* legger på litt padding */
+    padding-right: 10px;
+    /* legger på litt padding */
+    padding-bottom: 2px;
+    /* legger på litt padding */
+    color: white;
+    text-decoration: none;
+    /* får bort streken under Explore teksten */
+    transition-duration: 0.9s;
+    /* gjør at animasjonen er tregere når du holder musepekeren over knappen */
+
+
+}
+
+.ExploreKnapp:hover {
+    /* css koden til hva som skal skje når du holder musepekeren over explore knappen */
+    background-color: white;
+    /* endrer bakgrunnsfargen */
+    color: #192e47;
+    /* endrer fargen på teksten til en egendefinert farge */
+
+}
+
+.undertekster {
+    /* css koden til klassen undertekster */
+    text-align: center;
+    /* teksten blir satt i midten av div-en eller hvilken boks den er i */
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    /* velger en skrifttype som er hentet fra internett */
+    color: white;
+}
+
+#medOss {
+    /* css koden for den store teksten på startsiden over explore knappen */
+    text-align: center;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    font-size: 70px;
+}
+
+#kinleyAssetsManagement {
+    /* teksten over #medOss. hvor det står Assets Management */
+    text-align: center;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+}
+
+#introduksjon {
+    /* css koden for div'en som inneholder teksten som er over bakgrunnsbilde på startsiden */
+    position: absolute;
+    top: 400px;
+    text-align: center;
+    color: aliceblue;
+    width: 100%;
+}
+
+#divKnapp {
+    /* css koden for div'en som inneholder knappen til høyre for logoen i menyen på toppen av nettsiden */
+    padding: 0;
+    margin: 0;
+}
+
+#utforskkinley {
+    /* css koden for tittelen som er under bakgrunnsbilde på startsiden. Der det står "Discover Kinley " */
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+    font-size: 48px;
+    text-align: center;
+}
+
+#selskaper {
+    /* css for div'en som inneholder "corporations & Institutions" teksten under Discover Kinley */
+    width: 50%;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    float: left;
+    color: white;
+    font-size: 16px;
+    background-color: #233f63;
+    text-align: center;
+
+}
+
+#selskaper:hover {
+    /* css koden for hva som skjer når du holder over "corporations & Institutions" sin div */
+    background-color: #31598a;
+}
+
+#enkeltpersoner {
+    /* css for div'en som inneholder 'Individual Investors' teksten under Discover Kinley */
+    width: 50%;
+    float: right;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    background-color: #284a73;
+}
+
+#enkeltpersoner:hover {
+    /* css koden for hva som skjer når du holder over "individual investors" sin div */
+    background-color: #1f3959;
+}
+
+#varselOmInnlogging {
+    /* css koden for div'en som inneholder varselen om at serverene er under et DDOS angrep. */
+    width: 100%;
+    height: 75px;
+    position: relative;
+    top: 61px;
+    background-color: white;
+    transition: top 0.1s;
+}
+
+#varselOmInnloggingDiv {
+    /* css koden for den grå bakgrunnen rundt den klikkbare varsel teksten */
+    background-color: lightgray;
+    width: 75%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    top: 15px;
+}
+
+#serverSender {
+    /* css koden for selve varsel teksten, som er inne i en anchor. Så serverSender er et anchor */
+    text-decoration: none;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+}
+
+#serverSender:hover {
+    /* css koden for hva som skjer når du holder musen over varsel teksten */
+    border-bottom: 2px solid #192e47;
+}
+
+.velgTypePerson {
+    /* css for teksten du trykker på for å velge om du er et selskap eller en enkelt investor */
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    height: 59px;
+    color: white;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+}
+
+#corps {
+    /* css for det bilde til venstre når du trykker på "corporations & Institutions"  */
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#corps2 {
+    /* css for det bilde til høyre når du trykker på "corporations & Institutions"  */
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#techBilde {
+    /* css for bildet som er til venstre når du ikke har trykket på noen knapper */
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bildeAvToMenn {
+    /* css for bildet som er til høyre når du ikke har trykket på noen knapper */
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#leverage {
+    /* css for det bilde til venstre når du trykker på "individual investor"  */
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bildeAvInvestor {
+    /* css for det bilde til høyre når du trykker på "individual investor"  */
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#techBildeDiv {
+    /* css for div'en bildene til venstre er */
+    width: 50%;
+    float: left;
+    margin: 0%;
+    padding: 0%;
+}
+
+#bildeAvToMennDiv {
+    /* css for div'en bildene til høyre er */
+    width: 50%;
+    float: right;
+    margin: 0%;
+    padding: 0%;
+}
+
+#bunnMeny {
+    /* css for div'en til infoen på bunnen av nettsidn */
+    margin-top: 100px;
+    overflow: hidden;
+    position: inherit;
+    bottom: 0px;
+    width: 100%;
+    height: 160px;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+}
+
+#monthlyPortfolioKnapp {
+    /* css for knappen til høyre av logoen i menyen på toppen av nettsiden */
+    text-decoration: none;
+    color: #192e47;
+    position: relative;
+    top: 40px;
+    font-size: larger;
+}
+
+#monthlyPortfolioKnapp:hover {
+    /* css for hva som skjer når du holder musepekeren over Mothly Portfolio knappen ved siden av logoen */
+    border-bottom: 2px solid #31598a;
+}
+
+
+
+
+
+
+
+/* CSS FOR KINLEY SERVERS */
+
+
+
+
+
+
+#serverBody {
+    /* css for body'en til availableServer.html */
+    background-color: #192e47;
+    margin: 0;
+    padding: 0;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+}
+
+#servers {
+    /* css for div'en som inneholder alt, unntatt menyen på toppen. Det er denne som lager den boksen som er i en annen farge */
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* gjør boksen som inneholder server statusene til hvit men veldig gjennomsiktig */
+    width: 75%;
+    margin: auto;
+    height: 600px;
+    font-size: 23px;
+}
+
+.online {
+    /* en css klasse som gjør tekst grønn */
+    color: lightgreen;
+}
+
+.offline {
+    /* en css klasse som gjør tekst grå */
+    color: gray
+}
+
+#responsTid {
+    /* css for div'en som inneholder de grønne boksene ved siden av Login servers */
+    width: 50%;
+    float: right;
+    margin: auto;
+    text-align: left;
+    position: relative;
+    top: -158px;
+    left: 15px;
+}
+
+#loginServere {
+    /* css for div'en som inneholder teksten "Login Servers" og "Stock Trading Servers" */
+    width: 50%;
+    float: left;
+    margin: auto;
+    text-align: right;
+}
+
+#responsTid2 {
+    /* css for div'en som inneholder de grønne boksene ved siden av Stock Trading Servers */
+    position: relative;
+    top: 45px;
+}
+
+#twitterMelding {
+    /* css for bildet av twitter meldingen */
+    position: absolute;
+    left: 5px;
+    top: 163px;
+
+}
+
+#twitterMelding:hover {
+    /* css for hva som skjer når du hovrer over twitter meldingen */
+    transition-duration: 1s;
+    transform: scale(1.5);
+    position: absolute;
+    left: 60px;
+    top: 210px;
+}
+
+#twitterFeed {
+    /* css for teksten som står over twitter meldingen, assa "Live Feed". */
+    position: absolute;
+    left: 10px;
+    top: 88px;
+    border-bottom: 2px solid white;
+}
+
+#serverListe {
+    /* css for en liste over servere */
+    width: 50%;
+    float: right;
+    position: relative;
+    top: -110px;
+    left: -18px;
+}
+
+#forsteUL>li {
+    /* css for alle <li> elementer som er direkte under <ul> elementet som jeg har satt til å ha id = "forsteUL" */
+    color: #6facf8
+}
+
+#forsteUL li {
+    /* css for alle <li> elementer som er mellom <ul> og </ul> elementet som jeg har satt til å ha id = "forsteUL" */
+    font-style: italic;
+}
+
+#forsteUL ul {
+    /* css for alle <ul> elementer som er mellom <ul> og </ul> elementet som jeg har satt til å ha id = "forsteUL" */
+    color: #427cc3
+}
+
+ul li {
+    /* css for alle <li> elementer som er mellom hvilken som helst <ul> og </ul> element */
+    font-weight: lighter;
+}
+
+#loginServereListe>li {
+    /* css for alle <li> elementer under <ul> elementet med id = "loginServereListe" */
+    color: gray;
+}
+
+#stockTradingServereListe>li {
+    /* css for alle <li> elementer under <ul> elementet med id = "stockTradingServereListe" */
+    color: green;
+}
+
+/*main portfolio */
+
+#hovedPortfolio {
+    /* css for alt innhold på maanedsportefolje.html, unntatt menyen på toppen */
+    position: absolute;
+    top: 100px;
+    text-align: center;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
+    width: 100%;
+
+}
+
+#portfolio {
+    /* css for tabellen som inneholder tabellen + teksten KINLEYPORTFOLIO*/
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid white;
+}
+
+#overInformasjonTabell th {
+    /* css for alle <th> elementene som er mellom <thead> elementet med id ="overInformasjonTabell" */
+    width: 150px;
+}
+
+.tjent {
+    /* En css klasse som gjør tekst grønn */
+    color: green;
+}
+
+.tapt {
+    /* En css klasse som gjør tekst rød */
+    color: red;
+}
+
+.strekUnder {
+    /* En css klasse som lager en hvit solid strek under teksten */
+    border-bottom: 0.5px solid white;
+}
