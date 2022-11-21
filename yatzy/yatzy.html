@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./yatzy.css">
+</head>
+<body>
+    <button onclick="kast()">Kast</button>
+    <button onclick="kastAlle()">Kast alle</button>
+    <button id="ferdigKnapp" onclick="lagre()" style="opacity: 0;">Runden din er ferdig, trykk her</button>
+    <div id="heleGrid">
+        <div style="font-weight: bold;">Deltakere</div>
+        <div onclick="kast1Gronn()" id="kast1"></div>
+        <div onclick="kast2Gronn()" id="kast2"></div>
+        <div onclick="kast3Gronn()" id="kast3"></div>
+        <div onclick="kast4Gronn()" id="kast4"></div>
+
+        <div>Enere</div>
+        <div id="deltakere1Enere"></div>
+        <div id="deltakere2Enere"></div>
+        <div id="deltakere3Enere"></div>
+        <div id="deltakere4Enere"></div>
+
+        <div>Toere</div>
+        <div id="deltakere1Toere"></div>
+        <div id="deltakere2Toere"></div>
+        <div id="deltakere3Toere"></div>
+        <div id="deltakere4Toere"></div>
+
+        <div>Treere</div>
+        <div id="deltakere1Treere"></div>
+        <div id="deltakere2Treere"></div>
+        <div id="deltakere3Treere"></div>
+        <div id="deltakere4Treere"></div>
+
+        <div>Firere</div>
+        <div id="deltakere1Firerre"></div>
+        <div id="deltakere2Firerre"></div>
+        <div id="deltakere3Firerre"></div>
+        <div id="deltakere4Firerre"></div>
+
+        <div>Femmere</div>
+        <div id="deltakere1Femerre"></div>
+        <div id="deltakere2Femerre"></div>
+        <div id="deltakere3Femerre"></div>
+        <div id="deltakere4Femerre"></div>
+
+        <div>Seksere</div>
+        <div id="deltakere1Seksere"></div>
+        <div id="deltakere2Seksere"></div>
+        <div id="deltakere3Seksere"></div>
+        <div id="deltakere4Seksere"></div>
+
+        <div style="font-weight: bold;">Sum</div>
+        <div id="deltakere1Sum"></div>
+        <div id="deltakere2Sum"></div>
+        <div id="deltakere3Sum"></div>
+        <div id="deltakere4Sum"></div>
+
+        <div style="font-weight:bold;">Bonus</div>
+        <div id="deltakere1Bonus"></div>
+        <div id="deltakere2Bonus"></div>
+        <div id="deltakere3Bonus"></div>
+        <div id="deltakere4Bonus"></div>
+
+        <div>Ett par</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>To par</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Tre like</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Fire like</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Liten straight</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Stor straight</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Hus</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Sjanse</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div>Yatzy</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div style="font-weight: bolde;">Totalt</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </div>
+    
+
+    <script>
+        function terning() {
+            return Math.floor(Math.random()*6)+1;
+        }
+        var kastSjekker = 0;
+        function kast() {
+            if(document.getElementById("kast1").style.backgroundColor != "green"){
+                document.getElementById("kast1").innerHTML = parseInt(terning());
+            }
+
+            if(document.getElementById("kast2").style.backgroundColor != "green"){
+                document.getElementById("kast2").innerHTML = parseInt(terning());
+            }
+
+            if(document.getElementById("kast3").style.backgroundColor != "green"){
+                document.getElementById("kast3").innerHTML = parseInt(terning());
+            }
+
+            if(document.getElementById("kast4").style.backgroundColor != "green"){
+                document.getElementById("kast4").innerHTML = parseInt(terning());
+            }
+            kastSjekker ++;
+            if(kastSjekker%3 == 0){
+                document.getElementById("ferdigKnapp").style.opacity = 1;
+            }
+        }
+
+        function kastAlle(){
+
+            document.getElementById("kast1").innerHTML = parseInt(terning());
+            document.getElementById("kast2").innerHTML = parseInt(terning());
+            document.getElementById("kast3").innerHTML = parseInt(terning());
+            document.getElementById("kast4").innerHTML = parseInt(terning());
+            document.getElementById("kast1").style.backgroundColor = "white";
+            document.getElementById("kast2").style.backgroundColor = "white";
+            document.getElementById("kast3").style.backgroundColor = "white";
+            document.getElementById("kast4").style.backgroundColor = "white";
+            document.getElementById("ferdigKnapp").style.opacity = 0;
+        }
+
+        var kast1GronnSjekker = 0;
+        function kast1Gronn(){
+            if(kast1GronnSjekker%2 == 0){
+                document.getElementById("kast1").style.backgroundColor = "green";
+                kast1GronnSjekker += 1;
+            }
+            else {
+                document.getElementById("kast1").style.backgroundColor = "white";
+                kast1GronnSjekker += 1;
+            }
+        }
+        var kast2GronnSjekker = 0;
+        function kast2Gronn(){
+            if(kast2GronnSjekker%2 == 0){
+                document.getElementById("kast2").style.backgroundColor = "green";
+                kast2GronnSjekker += 1;
+            }
+            else {
+                document.getElementById("kast2").style.backgroundColor = "white";
+                kast2GronnSjekker += 1;
+            }
+        }
+        var kast3GronnSjekker = 0;
+        function kast3Gronn(){
+            if(kast3GronnSjekker%2 == 0){
+                document.getElementById("kast3").style.backgroundColor = "green";
+                kast3GronnSjekker += 1;
+            }
+            else {
+                document.getElementById("kast3").style.backgroundColor = "white";
+                kast3GronnSjekker += 1;
+            }
+        }
+        var kast4GronnSjekker = 0;
+        function kast4Gronn(){
+            if(kast4GronnSjekker%2 == 0){
+                document.getElementById("kast4").style.backgroundColor = "green";
+                kast4GronnSjekker += 1;
+            }
+            else {
+                document.getElementById("kast4").style.backgroundColor = "white";
+                kast4GronnSjekker += 1;
+            }
+        }
+        var spillerSjekker = 0;
+        var teller = 0;
+        function lagre(){
+            spillerSjekker ++;
+            if(teller == 4){
+                teller = 0;
+            }
+            teller++;
+            console.log(spillerSjekker)
+            if(spillerSjekker < 5){
+                var resultatAvKastene1 = 0;
+            if(document.getElementById("kast1").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast2").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast3").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast4").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            console.log(resultatAvKastene1)
+            document.getElementById('deltakere'+String(teller)+'Enere').innerHTML = resultatAvKastene1;
+            console.log("Enere")
+            }
+
+
+            if(4 < spillerSjekker && spillerSjekker < 9){
+                var resultatAvKastene1 = 0;
+            if(document.getElementById("kast1").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast2").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast3").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast4").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            document.getElementById('deltakere'+String(teller)+'Toere').innerHTML = resultatAvKastene1;
+            }
+
+
+
+
+            if(8 < spillerSjekker && spillerSjekker < 13){
+                var resultatAvKastene1 = 0;
+            if(document.getElementById("kast1").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast2").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast3").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast4").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            document.getElementById('deltakere'+String(teller)+'Treere').innerHTML = resultatAvKastene1;
+            }
+
+            if(12 < spillerSjekker && spillerSjekker < 17){
+                var resultatAvKastene1 = 0;
+            if(document.getElementById("kast1").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast2").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast3").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast4").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            document.getElementById('deltakere'+String(teller)+'Firerre').innerHTML = resultatAvKastene1;
+            }
+
+            if(16 < spillerSjekker && spillerSjekker < 21){
+                var resultatAvKastene1 = 0;
+            if(document.getElementById("kast1").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast2").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast3").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast4").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            document.getElementById('deltakere'+String(teller)+'Femerre').innerHTML = resultatAvKastene1;
+            }
+
+            if(20 < spillerSjekker && spillerSjekker < 25){
+                var resultatAvKastene1 = 0;
+            if(document.getElementById("kast1").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast2").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast3").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            if(document.getElementById("kast4").style.backgroundColor == "green"){
+                resultatAvKastene1 ++;
+            }
+            document.getElementById('deltakere'+String(teller)+'Seksere').innerHTML = resultatAvKastene1;
+            
+            const listeOverKategoriene = ['Enere','Toere','Treere','Firerre','Femerre','Seksere']
+            var summen;
+            for(let i = 0; i < 6; i++){
+                console.log(parseInt(document.getElementById('deltakere'+String(teller)+String(listeOverKategoriene[i])).innerText))
+                summen = summen + document.getElementById('deltakere'+String(teller)+String(listeOverKategoriene[i])).innerText;
+                console.log(summen)
+            }
+            toStringSummen10 = String(summen[9]);
+            toStringSummen11 = String(summen[10]);
+            toStringSummen12 = String(summen[11]);
+            toStringSummen13 = String(summen[12]);
+            toStringSummen14 = String(summen[13]);
+            toStringSummen15 = String(summen[14]);
+            ektesumm = parseInt(toStringSummen10)+parseInt(toStringSummen11)+parseInt(toStringSummen12)+parseInt(toStringSummen13)+parseInt(toStringSummen14)+parseInt(toStringSummen15);
+            console.log(ektesumm)
+            console.log("teller er: " + teller)
+            document.getElementById('deltakere'+String(teller)+'Sum').innerHTML = ektesumm;
+            }
+            deltakere1Sum
+            kastAlle();
+
+        }
+    </script>
+
+</body>
+</html>
