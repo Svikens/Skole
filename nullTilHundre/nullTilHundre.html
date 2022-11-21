@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgaver</title>
+
+    <style>
+        body > p {
+            color: whitesmoke;
+        }
+        body > button {
+            color: whitesmoke;
+            background-color: transparent;
+        }
+        body > input {
+            color: whitesmoke;
+            background-color: transparent;
+        }
+    </style>
+
+</head>
+<body style="background-image: url(./jameswebbGRÅ.png);">
+    <input  id="x"type="number" placeholder="Heltallet du vil telle til">
+    <button onclick="nullTilX()">Tell til tallet</button>
+    <div style="width: 10px;"></div>
+     <div style="width: 10px; height: 10px;"></div>
+    <button onclick="nullTilHundre()">Null til hundre</button>
+    <button onclick="nullTilHundre10()">10-gangeren</button>
+    <button onclick="atteGangeren()">Åtte gangeren</button>
+    <button onclick="ord()">Generer ett ord</button>
+    <button onclick="gucciGang()">Gucci Gang</button>
+    <button onclick="lilleGangeTabellen()">lilleGangeTabellen</button>
+    <button onclick="fjernOrd()">Fjern Generert Ord</button>
+    <p id="svar1"></p>
+    <p id="svar2"></p>
+    <p id="svar3"></p>
+    <p id="svar4"></p>
+    <p id="svar5"></p>
+    <p id="svar7"></p>
+    <p id="svar6"></p>
+
+
+
+
+
+    <script>
+        let nullTilHundreSjekker = 0;
+        function nullTilHundre(){
+            if(nullTilHundreSjekker%2 == 0){
+                document.getElementById("svar1").style.opacity = 1;
+                let i = 0;
+            var output = "Null til hundre:  ";
+            while (i<100){
+                if(i<99){
+                    i++;
+                    output += i.toString()+" , ";
+                document.getElementById("svar1").innerHTML = output;
+                }
+                else{
+                    i++;
+                    output += i.toString()+".";
+                document.getElementById("svar1").innerHTML = output;
+            }
+            }
+            nullTilHundreSjekker += 1;
+            }
+            else {
+                nullTilHundreSjekker += 1;
+                document.getElementById("svar1").style.opacity = 0;
+            }
+        }
+        let lilleGangeTabellenSjekker = 0;
+        function lilleGangeTabellen(){
+            if(lilleGangeTabellenSjekker%2 == 0){
+                document.getElementById("svar7").style.opacity = 1;
+                const heleGangeTabellen = [[],[],[],[],[],[],[],[],[],[]]; 
+            for(i = 1; i <= 10; i++){
+            for(x=1; x <= 10; x ++){
+                heleGangeTabellen[i-1][x] = x*i;
+            }
+        }
+        document.getElementById("svar7").innerHTML = "1-gangeren: " + heleGangeTabellen[0].slice(1, heleGangeTabellen[0].length - 1)+"." +"<br>"+ "2-gangeren: " + heleGangeTabellen[1].slice(1, heleGangeTabellen[1].length - 1)+"."+"<br>"+
+"3-gangeren: " + heleGangeTabellen[2].slice(1, heleGangeTabellen[2].length - 1)+"."+"<br>"+
+"4-gangeren: " + heleGangeTabellen[3].slice(1, heleGangeTabellen[3].length - 1)+"."+"<br>"+
+"5-gangeren: " + heleGangeTabellen[4].slice(1, heleGangeTabellen[4].length - 1)+"."+"<br>"+
+"6-gangeren: " + heleGangeTabellen[5].slice(1, heleGangeTabellen[5].length - 1)+"."+"<br>"+
+"7-gangeren: " + heleGangeTabellen[6].slice(1, heleGangeTabellen[6].length - 1)+"."+"<br>"+
+"8-gangeren: " + heleGangeTabellen[7].slice(1, heleGangeTabellen[7].length - 1)+"."+"<br>"+
+"9-gangeren: " + heleGangeTabellen[8].slice(1, heleGangeTabellen[8].length - 1)+"."+"<br>"+
+"10-gangeren: " + heleGangeTabellen[9].slice(1, heleGangeTabellen[9].length - 1)+"."+"<br>";
+        lilleGangeTabellenSjekker += 1;
+            }
+            else {
+                lilleGangeTabellenSjekker += 1;
+                document.getElementById("svar7").innerHTML = "";
+            }
+        }
+        
+
+        let nullTilHundre10Sjekker = 0;
+        function nullTilHundre10(){
+            if(nullTilHundre10Sjekker%2 == 0){
+                document.getElementById("svar2").style.opacity = 1;
+            let i = 0;
+            var output = "10-gangeren:  ";
+            while (i<100){
+                if(i<90){
+                    i += 10;
+                    output += i.toString()+" , ";
+                document.getElementById("svar2").innerHTML = output;
+                }
+                else{
+                    i += 10;
+                    output += i.toString()+".";
+                document.getElementById("svar2").innerHTML = output;
+            }
+            }
+            nullTilHundre10Sjekker += 1
+            }
+            else {
+                document.getElementById("svar2").style.opacity = 0;
+                nullTilHundre10Sjekker += 1
+            }
+
+        }
+        let atteGangerenSjekker = 0;
+        function atteGangeren(){
+            if(atteGangerenSjekker%2 == 0){
+                document.getElementById("svar3").style.opacity = 1;
+                var output = "8-gangeren:  "
+            for (let i = 1; i <= 10; i++) {
+                if(i<10){
+                    a = i*8;
+                output += a.toString()+" , ";
+                document.getElementById("svar3").innerHTML = output;
+                }
+                if(i==10){
+                    a = i*8;
+                output += a.toString()+".";
+                document.getElementById("svar3").innerHTML = output;
+                }
+            }
+            atteGangerenSjekker += 1;
+            }
+            else{
+                atteGangerenSjekker += 1;
+                document.getElementById("svar3").style.opacity = 0;
+
+            }
+        }
+        function ord(){
+            const vokaler = [
+                "a",
+                "e",
+                "i",
+                "o",
+                "u",
+                "y",
+                "æ",
+                "ø",
+                "å"
+            ];
+            const konsonanter = [
+                "b",
+                "c",
+                "d",
+                "f",
+                "g",
+                "h",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "v",
+                "w",
+                "z"
+        ]
+        var tilfeldigVokal = parseInt(Math.random()*9);
+        var tilfeldigVokal2 = parseInt(Math.random()*9);
+        var tilfedligKonstant = parseInt(Math.random()*19);
+        document.getElementById("svar4").style.opacity = 1;
+        var ordet = vokaler[tilfeldigVokal]+konsonanter[tilfedligKonstant]+vokaler[tilfeldigVokal2];
+        document.getElementById("svar4").innerHTML = ordet;
+        }
+
+        function nullTilX(){
+            let i = 0;
+            var output = "Null til X:  ";
+            var talletX = parseInt(document.getElementById("x").value)
+            while (i<talletX){
+                if(i<talletX-1){
+                    i++;
+                    output += i.toString()+" , ";
+                document.getElementById("svar5").innerHTML = output;
+                }
+                else{
+                    i++;
+                    output += i.toString()+".";
+                document.getElementById("svar5").innerHTML = output;
+            }
+            }
+        }
+        let gucciGangSjekker = 0;
+        function gucciGang(){
+            if(gucciGangSjekker%2 == 0){
+            document.getElementById("svar6").style.opacity=1;
+            tesktenGucciGang = "gucci gang";
+            tekstenChains = " spend three racks on new chains";
+            sammensatt = tesktenGucciGang.repeat(7)+tekstenChains;
+            document.getElementById("svar6").innerHTML = sammensatt.repeat(74);
+            gucciGangSjekker += 1;
+            }
+            else{
+                document.getElementById("svar6").style.opacity=0;
+                gucciGangSjekker += 1;
+            }
+        }
+        function fjernOrd() {
+                document.getElementById("svar4").style.opacity = 0;
+        }
+    </script>
+
+
+
+</body>
+</html>
