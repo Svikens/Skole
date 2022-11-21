@@ -1,0 +1,133 @@
+body {
+    background-color: #444141;
+    color: white;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+}
+
+div {
+    padding: 10px;
+    background-color: #28282B;
+    float: left;
+}
+
+section {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(18, minmax(10px, 77px));
+    grid-template-rows: repeat(7, minmax(10px, 77px));
+    
+}
+
+section>div:hover {
+    transform: scale(1.2);
+}
+
+.span16 {
+    grid-column: span 16;
+    opacity: 0;
+}
+
+.span15 {
+    grid-column: span 15;
+    opacity: 0;
+}
+
+.span10 {
+    grid-column: span 10;
+    opacity: 0;
+}
+
+.span8 {
+    grid-column: span 8;
+    opacity: 0;
+}
+
+.span7 {
+    grid-column: span 7;
+    opacity: 0;
+}
+
+.span3 {
+    grid-column: span 3;
+    opacity: 0;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+.blueHeight {
+    height: 100%;
+}
+
+section>div:hover {
+    transform: scale(1.);
+}
+
+.usynlig {
+    opacity: 0;
+}
+
+/* Elementer */
+.reaktivenon-metals {
+    background-color: #3E6418;
+}
+
+.transition-metals {
+    background-color: #961724;
+}
+
+.noblegasser {
+    background-color: #3A2151;
+}
+
+.halvmetaller {
+    background-color: #015146;
+}
+
+.post-transition-metals {
+    background-color: #003666;
+}
+
+.sort {
+    background-color: #222222;
+}
+
+.alkaner {
+    background-color: #846011;
+}
+
+.lanthanoids {
+    background-color: #402C17;
+}
+
+.alkanmetaller {
+    background-color: #6C3B01;
+}
+
+.Actinoids {
+    background-color: #732E4C;
+}
+
+#femtisyv {
+    position: relative;
+    top: 5px
+}
+
+#åttini {
+    position: relative;
+    top: 81px
+}
+
+#seks {
+    position: relative;
+    top: 160px
+}
+
+#syv {
+    position: relative;
+    top: 180px
+}
+
