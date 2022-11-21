@@ -1,0 +1,147 @@
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: smaller;
+}
+
+#introduksjon {
+    font-family: 'Titillium Web', sans-serif;
+    color: white;
+    width: 50%;
+    float: left;
+    font-size: smaller;
+}
+
+#logo {
+    background-color: brown;
+}
+
+#startDiv {
+    display: grid;
+    justify-content: center;
+}
+
+section {
+    display: grid;
+    width: 100%;
+    position: relative;
+    top: 10%;
+    
+}
+
+#prosjekterDiv {
+
+    height: 800px;
+    display: grid;
+    grid-template-columns: repeat(14, minmax(10px, 110px));
+    grid-template-rows: repeat(18, minmax(10px, 77px));
+    opacity: 0;
+}
+
+
+#introduksjonsTekst {
+    animation: 4s tekstLoading ease-out;
+  }
+  @keyframes tekstLoading{
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+      }
+      20% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+}
+
+#portfolio {
+  animation: 6s portfolioVises;
+}
+@keyframes portfolioVises{
+  0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes tekstLoading2{
+  0% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+}
+
+
+
+
+#kinley:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#skScholar:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#gjettePassord:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#periodesystemet:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#x1511:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#skuddar:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#nullTilhundre:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+#yatzy:hover {
+  transform: scale(1.1);
+  transition-duration: 2s;
+}
+
+
+
+
+
+#andreOppgaver {
+  display: grid;
+    grid-template-columns: repeat(14, minmax(10px, 110px));
+    grid-template-rows: repeat(18, minmax(10px, 77px));
+    opacity: 1;
+}
+
+
+@keyframes altBlirBorte{
+  0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
