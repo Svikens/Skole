@@ -41,7 +41,7 @@ section {
 
 
 #introduksjonsTekst {
-    animation: 4s tekstLoading ease-out;
+    animation: 1.5s tekstLoading ease-out;
   }
   @keyframes tekstLoading{
     0% {
@@ -58,7 +58,7 @@ section {
 }
 
 #portfolio {
-  animation: 6s portfolioVises;
+  animation: 3s portfolioVises;
 }
 @keyframes portfolioVises{
   0% {
@@ -145,3 +145,4 @@ section {
       opacity: 0;
     }
 }
+
