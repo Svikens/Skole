@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sindre Ytazy</title>
+    <link rel="stylesheet" href="./yatzySpill.css">
+</head>
+
+<body>
+    <p id="kastsjekker">Du har kastet 0 ganger.</p>
+    <button onclick="kast()"
+        style="padding: 10px 20px;border-radius: 5px;box-shadow: 0px 0px 15px #888888;">Kast</button>
+    <button id="ferdigKnapp" onclick="lagre()" style="display: block;">Runden din er ferdig, trykk her. <br>Husk å lagre
+        tallene før du trykker</button>
+    <div id="forstGrid">
+        <div></div>
+        <div onclick="kast1Gronn()" id="kast1" style="color:transparent;"></div>
+        <div onclick="kast2Gronn()" id="kast2" style="color:transparent;"></div>
+        <div onclick="kast3Gronn()" id="kast3" style="color:transparent;"></div>
+        <div onclick="kast4Gronn()" id="kast4" style="color:transparent;"></div>
+        <div onclick="kast5Gronn()" id="kast5" style="color:transparent;"></div>
+    </div>
+    <div id="heleGrid">
+        <div>Deltakere</div>
+        <div id="spiller1Div">Spiller 1</div>
+        <div id="spiller2Div">Spiller 2</div>
+        <div id="spiller3Div">Spiller 3</div>
+        <div id="spiller4Div">Spiller 4</div>
+
+        <div>Enere</div>
+        <div id="deltakere1Enere"></div>
+        <div id="deltakere2Enere"></div>
+        <div id="deltakere3Enere"></div>
+        <div id="deltakere4Enere"></div>
+
+        <div>Toere</div>
+        <div id="deltakere1Toere"></div>
+        <div id="deltakere2Toere"></div>
+        <div id="deltakere3Toere"></div>
+        <div id="deltakere4Toere"></div>
+
+        <div>Treere</div>
+        <div id="deltakere1Treere"></div>
+        <div id="deltakere2Treere"></div>
+        <div id="deltakere3Treere"></div>
+        <div id="deltakere4Treere"></div>
+
+        <div>Firere</div>
+        <div id="deltakere1Firerre"></div>
+        <div id="deltakere2Firerre"></div>
+        <div id="deltakere3Firerre"></div>
+        <div id="deltakere4Firerre"></div>
+
+        <div>Femmere</div>
+        <div id="deltakere1Femerre"></div>
+        <div id="deltakere2Femerre"></div>
+        <div id="deltakere3Femerre"></div>
+        <div id="deltakere4Femerre"></div>
+
+        <div>Seksere</div>
+        <div id="deltakere1Seksere"></div>
+        <div id="deltakere2Seksere"></div>
+        <div id="deltakere3Seksere"></div>
+        <div id="deltakere4Seksere"></div>
+
+        <div style="font-weight: bold;">Sum</div>
+        <div id="deltakere1Sum"></div>
+        <div id="deltakere2Sum"></div>
+        <div id="deltakere3Sum"></div>
+        <div id="deltakere4Sum"></div>
+
+        <div style="font-weight:bold;">Bonus</div>
+        <div id="deltakere1Bonus"></div>
+        <div id="deltakere2Bonus"></div>
+        <div id="deltakere3Bonus"></div>
+        <div id="deltakere4Bonus"></div>
+
+        <div>Ett par</div>
+        <div id="par11"></div>
+        <div id="par12"></div>
+        <div id="par13"></div>
+        <div id="par14"></div>
+
+        <div>To par</div>
+        <div id="par21"></div>
+        <div id="par22"></div>
+        <div id="par23"></div>
+        <div id="par24"></div>
+
+        <div>Tre like</div>
+        <div id="par31"></div>
+        <div id="par32"></div>
+        <div id="par33"></div>
+        <div id="par34"></div>
+
+        <div>Fire like</div>
+        <div id="par41"></div>
+        <div id="par42"></div>
+        <div id="par43"></div>
+        <div id="par44"></div>
+
+        <div>Liten straight</div>
+        <div id="litenStraight1"></div>
+        <div id="litenStraight2"></div>
+        <div id="litenStraight3"></div>
+        <div id="litenStraight4"></div>
+
+        <div>Stor straight</div>
+        <div id="storStraight1"></div>
+        <div id="storStraight2"></div>
+        <div id="storStraight3"></div>
+        <div id="storStraight4"></div>
+
+        <div>Hus</div>
+        <div id="hus1"></div>
+        <div id="hus2"></div>
+        <div id="hus3"></div>
+        <div id="hus4"></div>
+
+        <div>Sjanse</div>
+        <div id="sjanse1"></div>
+        <div id="sjanse2"></div>
+        <div id="sjanse3"></div>
+        <div id="sjanse4"></div>
+
+        <div>Yatzy</div>
+        <div id="yatzy1"></div>
+        <div id="yatzy2"></div>
+        <div id="yatzy3"></div>
+        <div id="yatzy4"></div>
+
+        <div style="font-weight: bold;">Totalt</div>
+        <div style="font-weight: bold;" id="total1"></div>
+        <div style="font-weight: bold;" id="total2"></div>
+        <div style="font-weight: bold;" id="total3"></div>
+        <div style="font-weight: bold;" id="total4"></div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+
+
+        // Funksjon for tilfeldig terning.
+        function terning() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+        // Variabel for å sjekke hvor mange kast som deltakeren har utført i runden sin.
+        var kastSjekker = 0;
+        // Variabel for å sjekke hvor mange kast som deltakeren har utført.
+        var hvorMangeKast = 0;
+        // Variabel for å sjekke hvor mange kast som har blitt kastet denne runden.
+        var kastSjekker2 = 0;
+        // Variabel for å velge riktig kolonne vi er på, fra en array.
+        var tallSjekkerVelger = 0;
+        // Variabel for velge riktig kolonne verdi fra en array.
+        var poengTellerListeVelger = 0;
+        // Funksjon for å få terningene til å kaste et random tall, og sjekker om de er markert.
+        function kast() {
+            kastSjekker2++;
+            if (kastSjekker2 < 4) {
+                for (let i = 1; i <= 5; i++) {
+                    if (document.getElementById(`kast${i}`).style.backgroundColor != "gray") {
+                        document.getElementById(`kast${i}`).style.opacity = 1;
+                        var tilfeldigTall = parseInt(terning());
+                        document.getElementById(`kast${i}`).innerHTML = tilfeldigTall;
+                        document.getElementById(`kast${i}`).style.backgroundImage = `url(./bilder/terning${tilfeldigTall}.png)`;
+                    }
+                }
+                kastSjekker++;
+                hvorMangeKast++;
+                if (kastSjekker % 3 == 0) {
+                    document.getElementById("ferdigKnapp").style.display = "block";
+                }
+                document.getElementById("kastsjekker").innerHTML = `Du har kastet ${hvorMangeKast} ganger.`
+            }
+        }
+
+        // Funksjon for å markere terningene
+        function markerTerningene(id) {
+            var sjekker = 0;
+            return function () {
+                if (sjekker % 2 == 0) {
+                    document.getElementById(id).style.backgroundColor = "gray";
+                    sjekker += 1;
+                }
+                else {
+                    document.getElementById(id).style.backgroundColor = "";
+                    sjekker += 1;
+                }
+            }
+        }
+
+        // Onclick funksjonene fra html-koden over, blir satt til en funksjon med sin id.
+        var kast1Gronn = markerTerningene("kast1");
+        var kast2Gronn = markerTerningene("kast2");
+        var kast3Gronn = markerTerningene("kast3");
+        var kast4Gronn = markerTerningene("kast4");
+        var kast5Gronn = markerTerningene("kast5");
+
+        // Variabel for å sjekke hvor langt i spillet vi har kommet.
+        var kolonneSjekker = 0;
+        // Variabel for å sjekke hvilken spiller som spiller
+        var teller = 0;
+        // Variabel for å sjekke hvilken arrayverdi vi skal velge.
+        var arraySjekker = 0;
+        // Variabel for å 
+        var parSjekker = 1;
+        var parTallSjekker = 1;
+        var summenTilTreLike = 0;
+        var kasteSummene = [[[], [], [], [], [], []], [[], [], [], [], [], []], [[], [], [], [], [], []], [[], [], [], [], [], []], [[], [], [], [], [], []]];
+        const summer = [[], [], [], []];
+        const tallSjekker = ['Enere', 'Toere', 'Treere', 'Firerre', 'Femerre', 'Seksere', 'ettPar']
+        const poengTellerListe = ['1', '2', '3', '4', '5', '6']
+        const parSjekkerArray = [];
+        function lagre() {
+
+            kolonneSjekker++;
+            hvorMangeKast = 0;
+            document.getElementById("kastsjekker").innerHTML = `Du har kastet ${hvorMangeKast} ganger.`
+            if (teller == 4) {
+                teller = 0;
+            }
+            teller++;
+            console.log(kolonneSjekker)
+            if (kolonneSjekker < 30) {
+                var resultatAvKastene1 = 0;
+                for (let i = 1; i <= 5; i++) {
+                    if (document.getElementById(`kast${i}`).style.backgroundColor == "gray" && document.getElementById(`kast${i}`).innerText == Number(poengTellerListe[poengTellerListeVelger])) {
+                        resultatAvKastene1 += Number(poengTellerListe[poengTellerListeVelger]);
+
+                        let parSjekker = Number(document.getElementById(`kast${i}`).innerText);
+                        parSjekkerArray.push(parSjekker);
+                    }
+                }
+                console.log(resultatAvKastene1);
+                if (tallSjekkerVelger < 6) {
+                    document.getElementById('deltakere' + String(teller) + String(tallSjekker[tallSjekkerVelger])).innerHTML = resultatAvKastene1;
+                }
+                console.log("Enere");
+                console.log("Tallsjekkervelger er ", tallSjekkerVelger);
+                console.log("Poengtellerlistevelger er ", poengTellerListeVelger);
+
+
+                kasteSummene[teller][tallSjekkerVelger] += resultatAvKastene1;
+
+
+                // summerer 1-6
+                if (tallSjekker[tallSjekkerVelger] == "Seksere") {
+                    var summene = kasteSummene[teller].reduce((a, b) => a + parseInt(Number(b)), 0);
+                    summer[teller] = summene;
+                    document.getElementById(`deltakere${teller}Sum`).innerHTML = summer[teller];
+                    console.log("summene: ", summer)
+                    document.getElementById('deltakere' + String(teller) + "Bonus").innerHTML = (summer[teller] >= 63) ? 50 : 0;
+                }
+
+
+                console.log(kasteSummene)
+                console.log("tallSjekker[tallSjekkerVelger] er:", tallSjekker[tallSjekkerVelger]);
+                console.log("tallSjekker[tallSjekkerVelger] er:", tallSjekker[6]);
+
+
+                if (tallSjekker[tallSjekkerVelger] == tallSjekker[6]) {
+                    // Får terningverdiene
+                    const terningVerdiene = [
+                        parseInt(document.getElementById(`kast1`).innerText),
+                        parseInt(document.getElementById(`kast2`).innerText),
+                        parseInt(document.getElementById(`kast3`).innerText),
+                        parseInt(document.getElementById(`kast4`).innerText),
+                        parseInt(document.getElementById(`kast5`).innerText)
+                    ];
+
+                    // Varibael for å lagre den høyeste verdien
+                    let hoyestePar = 0;
+
+                    // Går gjennom tallene og sjekker om det er noen tall som matcher.
+                    let likhet = false;
+                    for (let i = 0; i < terningVerdiene.length; i++) {
+                        for (let j = 0; j < terningVerdiene.length; j++) {
+                            if (i !== j && terningVerdiene[i] === terningVerdiene[j] && document.getElementById(`kast${i + 1}`).style.backgroundColor == "gray" && document.getElementById(`kast${j + 1}`).style.backgroundColor == "gray") {
+                                likhet = true;
+                                if (terningVerdiene[i] > hoyestePar) {
+                                    hoyestePar = terningVerdiene[i];
+                                }
+                            }
+                        }
+                    }
+
+                    // Hvis det er noen tall som matcher, så settes det høyeste parret til poengsum.
+                    if (likhet) {
+                        document.getElementById(`par1${teller}`).innerText = hoyestePar * 2;
+                    } else {
+                        document.getElementById(`par1${teller}`).innerText = 0;
+                    }
+                }
+
+                if (teller % 4 == 0 && teller > 0) {
+                    tallSjekkerVelger++;
+                }
+                if (teller % 4 == 0 && teller > 0) {
+                    poengTellerListeVelger++;
+                }
+
+            }
+
+
+            // If-løkke for å finne par.
+            if (28 < kolonneSjekker && kolonneSjekker < 33) {
+                var kast1 = parseInt(document.getElementById(`kast1`).innerText);
+                var kast2 = parseInt(document.getElementById(`kast2`).innerText);
+                var kast3 = parseInt(document.getElementById(`kast3`).innerText);
+                var kast4 = parseInt(document.getElementById(`kast4`).innerText);
+                var kast5 = parseInt(document.getElementById(`kast5`).innerText);
+
+                var parSum = 0;
+
+                if (document.getElementById(`kast1`).style.backgroundColor == "gray") {
+                    if (document.getElementById(`kast2`).style.backgroundColor == "gray" && kast1 == kast2) {
+                        parSum += kast1 + kast2;
+                    }
+                    if (document.getElementById(`kast3`).style.backgroundColor == "gray" && kast1 == kast3) {
+                        parSum += kast1 + kast3;
+                    }
+                    if (document.getElementById(`kast4`).style.backgroundColor == "gray" && kast1 == kast4) {
+                        parSum += kast1 + kast4;
+                    }
+                    if (document.getElementById(`kast5`).style.backgroundColor == "gray" && kast1 == kast5) {
+                        parSum += kast1 + kast5;
+                    }
+                }
+
+                if (document.getElementById(`kast2`).style.backgroundColor == "gray") {
+                    if (document.getElementById(`kast3`).style.backgroundColor == "gray" && kast2 == kast3) {
+                        parSum += kast2 + kast3;
+                    }
+                    if (document.getElementById(`kast4`).style.backgroundColor == "gray" && kast2 == kast4) {
+                        parSum += kast2 + kast4;
+                    }
+                    if (document.getElementById(`kast5`).style.backgroundColor == "gray" && kast2 == kast5) {
+                        parSum += kast2 + kast5;
+                    }
+                }
+
+                if (document.getElementById(`kast3`).style.backgroundColor == "gray") {
+                    if (document.getElementById(`kast4`).style.backgroundColor == "gray" && kast3 == kast4) {
+                        parSum += kast3 + kast4;
+                    }
+                    if (document.getElementById(`kast5`).style.backgroundColor == "gray" && kast3 == kast5) {
+                        parSum += kast3 + kast5;
+                    }
+                }
+
+                if (document.getElementById(`kast4`).style.backgroundColor == "gray") {
+                    if (document.getElementById(`kast5`).style.backgroundColor == "gray" && kast4 == kast5) {
+                        parSum += kast4 + kast5;
+                    }
+                }
+
+                if (parSum > 0) {
+                    document.getElementById(`par2${teller}`).innerText = parSum;
+                } else {
+                    document.getElementById(`par2${teller}`).innerText = 0;
+                }
+            }
+
+            // If-løkke for å finne tre like
+            if (32 < kolonneSjekker && kolonneSjekker < 37) {
+                var resultatAvKastene1 = 0;
+                console.log("trePar");
+                const parSjekkerArray = [];
+
+                for (let i = 1; i <= 5; i++) {
+                    const element = document.getElementById('kast' + i);
+                    if (element.style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray.push(Number(element.innerText));
+                    }
+                }
+
+                parSjekkerArray.sort();
+
+                if (parSjekkerArray.length > 0 && parSjekkerArray[0] == parSjekkerArray[1] && parSjekkerArray[1] == parSjekkerArray[2]) {
+                    document.getElementById('par3' + String(teller)).innerHTML = Number(parSjekkerArray[2]) * 3;
+                } else {
+                    document.getElementById('par3' + String(teller)).innerHTML = 0;
+                }
+
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+            // If-løkke for å finne 4 like
+            if (36 < kolonneSjekker && kolonneSjekker < 41) {
+                var resultatAvKastene1 = 0;
+                const parSjekkerArray = [];
+                const sjekkerArrayen = [];
+                const kastIds = ["kast1", "kast2", "kast3", "kast4", "kast5"];
+                for (let i = 0; i < kastIds.length; i++) {
+                    if (document.getElementById(kastIds[i]).style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[i] = Number(document.getElementById(kastIds[i]).innerText);
+                        sjekkerArrayen.push(i);
+                    }
+                }
+                if (parSjekkerArray.length > 0 && parSjekkerArray[sjekkerArrayen[0]] == parSjekkerArray[sjekkerArrayen[1]] && parSjekkerArray[sjekkerArrayen[1]] == parSjekkerArray[sjekkerArrayen[2]] && parSjekkerArray[sjekkerArrayen[2]] == parSjekkerArray[sjekkerArrayen[3]]) {
+                    document.getElementById('par4' + String(teller)).innerHTML = Number(parSjekkerArray[sjekkerArrayen[2]]) * 4;
+                }
+                else {
+                    document.getElementById('par4' + String(teller)).innerHTML = 0;
+                }
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+
+            // If-løkke for å finne en liten straight
+            if (40 < kolonneSjekker && kolonneSjekker < 45) {
+                var resultat = 0;
+                console.log("Straight")
+                const parSjekkerArray = [];
+                const sjekkerArrayen = [];
+                if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                    if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                        resultat += 1;
+                        console.log("felt1", Number(document.getElementById("kast1").innerText))
+                        parSjekkerArray[0] = Number(document.getElementById("kast1").innerText);
+                        sjekkerArrayen.push(0);
+                        console.log(parSjekkerArray);
+                    }
+                    if (document.getElementById("kast2").style.backgroundColor == "gray") {
+                        resultat += 1;
+                        parSjekkerArray[1] = Number(document.getElementById("kast2").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(1);
+                    }
+                    if (document.getElementById("kast3").style.backgroundColor == "gray") {
+                        resultat += 1;
+                        parSjekkerArray[2] = Number(document.getElementById("kast3").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(2);
+                    }
+                    if (document.getElementById("kast4").style.backgroundColor == "gray") {
+                        resultat += 1;
+                        parSjekkerArray[3] = Number(document.getElementById("kast4").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(3);
+                    }
+                    if (document.getElementById("kast5").style.backgroundColor == "gray") {
+                        resultat += 1;
+                        parSjekkerArray[4] = Number(document.getElementById("kast5").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(4);
+                    }
+                }
+                parSjekkerArray.sort();
+                if (parSjekkerArray.length == 5 && parSjekkerArray[sjekkerArrayen[0]] == 1 && parSjekkerArray[sjekkerArrayen[1]] == 2 && parSjekkerArray[sjekkerArrayen[2]] == 3 && parSjekkerArray[sjekkerArrayen[3]] == 4 && parSjekkerArray[sjekkerArrayen[4]] == 5)
+                    document.getElementById('litenStraight' + String(teller)).innerHTML = 15;
+                else
+                    document.getElementById('litenStraight' + String(teller)).innerHTML = 0;
+            }
+
+
+            // If-løkke for å finne en stor straight
+            if (44 < kolonneSjekker && kolonneSjekker < 49) {
+                var res = 0;
+                const parArr = [];
+                const sjekkArr = [];
+                if (document.getElementById('kast1').style.backgroundColor == 'gray') {
+                    if (document.getElementById('kast1').style.backgroundColor == 'gray') {
+                        res += 1;
+                        console.log('felt1', Number(document.getElementById('kast1').innerText));
+                        parArr[0] = Number(document.getElementById('kast1').innerText);
+                        sjekkArr.push(0);
+                        console.log(parArr);
+                    }
+                    if (document.getElementById('kast2').style.backgroundColor == 'gray') {
+                        res += 1;
+                        parArr[1] = Number(document.getElementById('kast2').innerText);
+                        console.log(parArr);
+                        sjekkArr.push(1);
+                    }
+                    if (document.getElementById('kast3').style.backgroundColor == 'gray') {
+                        res += 1;
+                        parArr[2] = Number(document.getElementById('kast3').innerText);
+                        console.log(parArr);
+                        sjekkArr.push(2);
+                    }
+                    if (document.getElementById('kast4').style.backgroundColor == 'gray') {
+                        res += 1;
+                        parArr[3] = Number(document.getElementById('kast4').innerText);
+                        console.log(parArr);
+                        sjekkArr.push(3);
+                    }
+                    if (document.getElementById('kast5').style.backgroundColor == 'gray') {
+                        res += 1;
+                        parArr[4] = Number(document.getElementById('kast5').innerText);
+                        console.log(parArr);
+                        sjekkArr.push(4);
+                    }
+                }
+                if (parArr.length == 5 && parArr[0] == 2 && parArr[1] == 3 && parArr[2] == 4 && parArr[3] == 5 && parArr[4] == 6) {
+                    document.getElementById('litenStraight' + String(teller)).innerHTML = 20;
+                }
+                else {
+                    document.getElementById('storStraight' + String(teller)).innerHTML = 0;
+                }
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+            // If-løkke for hus
+            if (48 < kolonneSjekker && kolonneSjekker < 53) {
+                var resultatAvKastene1 = 0;
+                const parSjekkerArray = [];
+                const sjekkerArrayen = [];
+                if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                    if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        console.log("felt1", Number(document.getElementById("kast1").innerText))
+                        parSjekkerArray[0] = Number(document.getElementById("kast1").innerText);
+                        sjekkerArrayen.push(0);
+                        console.log(parSjekkerArray);
+                    }
+                    if (document.getElementById("kast2").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[1] = Number(document.getElementById("kast2").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(1);
+                    }
+                    if (document.getElementById("kast3").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[2] = Number(document.getElementById("kast3").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(2);
+                    }
+                    if (document.getElementById("kast4").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[3] = Number(document.getElementById("kast4").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(3);
+                    }
+                    if (document.getElementById("kast5").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[4] = Number(document.getElementById("kast5").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(4);
+                    }
+                }
+                console.log("Sjekkerarrayen", sjekkerArrayen);
+                console.log("parsjekkerarray", parSjekkerArray);
+                console.log("lengden er: ", parSjekkerArray.length);
+                console.log("partallsjekker er:", parTallSjekker);
+                console.log("teller er:", teller);
+                console.log("Parsjekkerarray", parSjekkerArray.sort());
+                if (parSjekkerArray[0] == parSjekkerArray[1]) {
+                    if (parSjekkerArray[4] == parSjekkerArray[3] && parSjekkerArray[3] == parSjekkerArray[2]) {
+                        if (parSjekkerArray.length == 0) {
+                            document.getElementById('hus' + String(teller)).innerHTML = 0;
+                        }
+                        else {
+                            document.getElementById('hus' + String(teller)).innerHTML = parSjekkerArray[0] + parSjekkerArray[1] + parSjekkerArray[2] + parSjekkerArray[3] + parSjekkerArray[4];
+                        }
+                    }
+                }
+                else {
+                    document.getElementById('hus' + String(teller)).innerHTML = 0;
+                }
+                if (parSjekkerArray[4] == parSjekkerArray[3]) {
+                    if (parSjekkerArray[0] == parSjekkerArray[1] && parSjekkerArray[1] == parSjekkerArray[2]) {
+                        if (parSjekkerArray.length == 0) {
+                            document.getElementById('hus' + String(teller)).innerHTML = 0;
+                        }
+                        else {
+                            document.getElementById('hus' + String(teller)).innerHTML = parSjekkerArray[0] + parSjekkerArray[1] + parSjekkerArray[2] + parSjekkerArray[3] + parSjekkerArray[4];
+                        }
+                    }
+                }
+                else {
+                    document.getElementById('hus' + String(teller)).innerHTML = 0;
+                }
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+
+
+
+
+            // If-løkke for sjanse
+            if (52 < kolonneSjekker && kolonneSjekker < 57) {
+                var resultatAvKastene1 = 0;
+                const parSjekkerArray = [];
+                const sjekkerArrayen = [];
+                if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                    if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        console.log("felt1", Number(document.getElementById("kast1").innerText))
+                        parSjekkerArray[0] = Number(document.getElementById("kast1").innerText);
+                        sjekkerArrayen.push(0);
+                        console.log(parSjekkerArray);
+                    }
+                    if (document.getElementById("kast2").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[1] = Number(document.getElementById("kast2").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(1);
+                    }
+                    if (document.getElementById("kast3").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[2] = Number(document.getElementById("kast3").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(2);
+                    }
+                    if (document.getElementById("kast4").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[3] = Number(document.getElementById("kast4").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(3);
+                    }
+                    if (document.getElementById("kast5").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[4] = Number(document.getElementById("kast5").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(4);
+                    }
+                }
+                console.log("Sjekkerarrayen", sjekkerArrayen);
+                console.log("parsjekkerarray", parSjekkerArray);
+                console.log("lengden er: ", parSjekkerArray.length);
+                console.log("partallsjekker er:", parTallSjekker);
+                console.log("teller er:", teller);
+                var sjanseSum = 0;
+                for (i = 0; i < sjekkerArrayen.length; i++) {
+                    sjanseSum += parSjekkerArray[sjekkerArrayen[i]];
+                    console.log("sjansesum er: ", sjanseSum);
+                }
+                document.getElementById('sjanse' + String(teller)).innerHTML = sjanseSum;
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+
+
+
+            // If-løkke for yatzy
+            if (56 < kolonneSjekker && kolonneSjekker < 61) {
+                var resultatAvKastene1 = 0;
+                const parSjekkerArray = [];
+                const sjekkerArrayen = [];
+                if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                    if (document.getElementById("kast1").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        console.log("felt1", Number(document.getElementById("kast1").innerText))
+                        parSjekkerArray[0] = Number(document.getElementById("kast1").innerText);
+                        sjekkerArrayen.push(0);
+                        console.log(parSjekkerArray);
+                    }
+                    if (document.getElementById("kast2").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[1] = Number(document.getElementById("kast2").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(1);
+                    }
+                    if (document.getElementById("kast3").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[2] = Number(document.getElementById("kast3").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(2);
+                    }
+                    if (document.getElementById("kast4").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[3] = Number(document.getElementById("kast4").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(3);
+                    }
+                    if (document.getElementById("kast5").style.backgroundColor == "gray") {
+                        resultatAvKastene1 += 1;
+                        parSjekkerArray[4] = Number(document.getElementById("kast5").innerText);
+                        console.log(parSjekkerArray);
+                        sjekkerArrayen.push(4);
+                    }
+                }
+                console.log("Sjekkerarrayen", sjekkerArrayen);
+                console.log("parsjekkerarray", parSjekkerArray);
+                console.log("lengden er: ", parSjekkerArray.length);
+                console.log("partallsjekker er:", parTallSjekker);
+                console.log("teller er:", teller);
+                if (parSjekkerArray.length > 0 && parSjekkerArray[0] == parSjekkerArray[1] && parSjekkerArray[1] == parSjekkerArray[2] && parSjekkerArray[2] == parSjekkerArray[3] && parSjekkerArray[3] == parSjekkerArray[4]) {
+                    document.getElementById('yatzy' + String(teller)).innerHTML = 50;
+                }
+                else {
+                    document.getElementById('yatzy' + String(teller)).innerHTML = 0;
+                }
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+
+
+            // If-løkke for totalsummen
+            if (60 < kolonneSjekker && kolonneSjekker < 65) {
+                var resultatAvKastene1 = 0;
+                const listeOverKategoriene = ['par1', 'par2', 'par3', 'par4', 'litenStraight', 'storStraight', 'hus', 'sjanse', 'yatzy']
+                var totalSummen = 0;
+                totalSummen += Number(document.getElementById(`deltakere` + String(teller) + `Sum`).innerText);
+                totalSummen += Number(document.getElementById(`deltakere` + String(teller) + `Bonus`).innerText);
+                for (i = 0; i < listeOverKategoriene.length; i++) {
+                    totalSummen += Number(document.getElementById(String(listeOverKategoriene[i] + String(teller))).innerText);
+                    console.log("totalsummen inni forløkken er: ", totalSummen);
+                }
+                console.log("totalSummen er : ", totalSummen);
+
+                document.getElementById(`total` + String(teller)).innerHTML = totalSummen;
+
+                if (teller == 4) {
+                    parTallSjekker++;
+                }
+                if (parTallSjekker == 5) {
+                    parTallSjekker = 1;
+                }
+            }
+            if(63 < kolonneSjekker && kolonneSjekker < 66){
+            total1 = Number(document.getElementById('total1').innerText);
+            total2 = Number(document.getElementById('total2').innerText);
+            total3 = Number(document.getElementById('total3').innerText);
+            total4 = Number(document.getElementById('total4').innerText);
+            if(total1 > total2 &&  total1 > total3 && total1 > total4){
+                alert("Spiller 1 vant!!")
+            }
+            else if(total2 > total1 &&  total2 > total3 && total2 > total4){
+                alert("Spiller 1 vant!!")
+            }
+
+            else if(total3 > total2 &&  total3 > total1 && total3 > total4){
+                alert("Spiller 1 vant!!")
+            }
+
+            else if(total4 > total2 &&  total4 > total3 && total4 > total1){
+                alert("Spiller 1 vant!!")
+            }
+            else{
+                alert("Noen fikk samme totalsum")
+            }
+        }
+
+            document.getElementById("ferdigKnapp").style.display = "block";
+
+            for (i = 1; i < 6; i++) {
+                document.getElementById(`kast${i}`).style.opacity = 0;
+                document.getElementById(`kast${i}`).style.backgroundColor = "";
+                document.getElementById(`kast${i}`).innerHTML = parseInt(terning());
+                console.log(`kastene er kast${i}`)
+            }
+            kastSjekker2 = 0;
+
+
+            
+        }
+        
+        
+    </script>
+
+</body>
+
+</html>

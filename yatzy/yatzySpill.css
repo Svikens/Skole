@@ -1,0 +1,91 @@
+
+@keyframes background-animation {
+    0% { background-color: #8f8f8f3d; }
+    25% { background-color: #d2d2d2; }
+    50% { background-color: #b3b3b3; }
+    75% { background-color: #a4a4a4; }
+    100% { background-color: #8f8f8f3d; }
+  }
+  
+  body {
+    background-color: #8f8f8f3d;
+    animation: background-animation 100s ease-in-out infinite;
+  }
+  
+
+#heleGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    width: 25%;
+    margin: 0 auto;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 10px;
+    box-shadow: 0px 0px 15px #888888;
+    border-radius: 10px;
+  }
+
+  #forstGrid {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    display: grid;
+}
+
+#heleGrid > div {
+    border-bottom: black solid 1px;
+    border-right: black solid 1px;
+    padding: 5px;
+    background-color: #f2f2f2;
+}
+#heleGrid div:first-child{
+    border-top: black solid 1px;
+    background-color: #f2f2f2;
+}
+#heleGrid div:nth-child(2){
+    border-top: black solid 1px;
+}
+#heleGrid div:nth-child(3){
+    border-top: black solid 1px;
+}
+#heleGrid div:nth-child(4){
+    border-top: black solid 1px;
+}
+#heleGrid div:nth-child(5){
+    border-top: black solid 1px;
+}
+#heleGrid div:nth-child(5n+1){
+    border-left: black solid 1px;
+}
+
+#ferdigKnapp {
+    position: absolute;
+    left: 8px;
+    top: 100px;
+    background: #0f0f0f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px #888888;
+}
+
+#forstGrid > div:nth-child(n+2)  {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    top: -52%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-radius: 20px;
+}
+
+#heleGrid {
+    position: relative;
+    top: -520px;
+}
+
+
+
+
+
