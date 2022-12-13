@@ -3,6 +3,7 @@ body {
     width: 100%;
     font-family: 'Titillium Web', sans-serif;
     font-size: smaller;
+    overflow-y: hidden;
 }
 
 #introduksjon {
