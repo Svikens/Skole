@@ -13,7 +13,7 @@
     <p id="kastsjekker">Du har kastet 0 ganger.</p>
     <button onclick="kast()"
         style="padding: 10px 20px;border-radius: 5px;box-shadow: 0px 0px 15px #888888;">Kast</button>
-    <button id="ferdigKnapp" onclick="lagre()" style="display: block;">Runden din er ferdig, trykk her. <br>Husk å lagre
+    <button id="ferdigKnapp" onclick="lagre()" style="display: none;">Runden din er ferdig, trykk her. <br>Husk å lagre
         tallene før du trykker</button>
     <div id="forstGrid">
         <div></div>
@@ -756,22 +756,22 @@
                 alert("Spiller 1 vant!!")
             }
             else if(total2 > total1 &&  total2 > total3 && total2 > total4){
-                alert("Spiller 1 vant!!")
+                alert("Spiller 2 vant!!")
             }
 
             else if(total3 > total2 &&  total3 > total1 && total3 > total4){
-                alert("Spiller 1 vant!!")
+                alert("Spiller 3 vant!!")
             }
 
             else if(total4 > total2 &&  total4 > total3 && total4 > total1){
-                alert("Spiller 1 vant!!")
+                alert("Spiller 4 vant!!")
             }
             else{
                 alert("Noen fikk samme totalsum")
             }
         }
 
-            document.getElementById("ferdigKnapp").style.display = "block";
+            document.getElementById("ferdigKnapp").style.display = "none";
 
             for (i = 1; i < 6; i++) {
                 document.getElementById(`kast${i}`).style.opacity = 0;
