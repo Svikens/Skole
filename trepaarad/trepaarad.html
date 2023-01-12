@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="transform: translateX(21%);">
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 2px; width: 100vh;">
+        <div onclick="markerRute1('firkant1')" id="firkant1" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant2')" id="firkant2" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant3')" id="firkant3" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant4')" id="firkant4" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant5')" id="firkant5" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant6')" id="firkant6" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant7')" id="firkant7" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant8')" id="firkant8" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+        <div onclick="markerRute1('firkant9')" id="firkant9" style="border: 2px solid black; height: 32vh;width: 33vh;background-color: white;"></div>
+    </div>
+    </div>
+    
+
+    <script>
+        spiller1farge = "purple"
+        spiller2farge = "green"
+        spillerfarge = "purple"
+        let spiller1Markerte = [
+            "spiller1",1,2,3,
+            4,5,6,
+            7,8,9
+        ];
+        let spiller2Markerte = [
+            "spiller2",1,2,3,
+            4,5,6,
+            7,8,9
+        ];
+        rundeTeller = 1;
+        let spillbrett =
+        [
+            1,2,3,
+            4,5,6,
+            7,8,9
+        ]
+
+        function markerRute1(rute){
+            if(document.getElementById(rute).style.background != "green" && document.getElementById(rute).style.background != "purple"){
+                document.getElementById(rute).style.background = spillerfarge;
+                
+            rundeTeller++;
+            if(rundeTeller%2 == 0){
+                spiller1Markerte[rute[7]] = "x";
+                spillbrett.pop();
+                spillerfarge = spiller2farge;
+            }
+            if(rundeTeller%2 == 1){
+                spiller2Markerte[rute[7]] = "x";
+                spillbrett.pop();
+                spillerfarge = spiller1farge;
+            }
+            }
+            else{}
+            console.log(spillbrett)
+            console.log(spillbrett.length)
+            console.log(spiller1Markerte)
+            console.log(spiller2Markerte)
+
+            horisontalsjekker(spiller1Markerte);
+            horisontalsjekker(spiller2Markerte);
+            vertikalsjekker(spiller1Markerte);
+            vertikalsjekker(spiller2Markerte);
+            
+            horisontalsjekker2(spiller1Markerte);
+            horisontalsjekker2(spiller2Markerte);
+
+        }
+
+        function horisontalsjekker(array){
+            if(array[1] == "x" && array[5] == "x" && array[9] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(array[3] == "x" && array[5] == "x" && array[7] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(spillbrett.length == 0){
+                alert("Ingen vant");
+                exit();
+            }
+        }
+        function vertikalsjekker(array){
+            if(array[1] == "x" && array[2] == "x" && array[3] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(array[4] == "x" && array[5] == "x" && array[6] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(array[7] == "x" && array[8] == "x" && array[9] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(spillbrett.length == 0){
+                alert("Ingen vant");
+                exit();
+            }
+        }
+        function horisontalsjekker2(array){
+            if(array[1] == "x" && array[4] == "x" && array[7] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(array[3] == "x" && array[6] == "x" && array[9] == "x"){
+                alert(array[0]+" har vunnet!");
+            }
+            if(spillbrett.length == 0){
+                alert("Ingen vant");
+                exit();
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>
