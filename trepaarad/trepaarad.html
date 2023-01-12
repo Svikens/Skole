@@ -84,9 +84,11 @@
             if(array[3] == "x" && array[5] == "x" && array[7] == "x"){
                 alert(array[0]+" har vunnet!");
             }
-            if(spillbrett.length == 0){
+            else{
+                if(spillbrett.length == 0){
                 alert("Ingen vant");
                 exit();
+            }   
             }
         }
         function vertikalsjekker(array){
@@ -99,9 +101,11 @@
             if(array[7] == "x" && array[8] == "x" && array[9] == "x"){
                 alert(array[0]+" har vunnet!");
             }
-            if(spillbrett.length == 0){
+            else{
+                if(spillbrett.length == 0){
                 alert("Ingen vant");
                 exit();
+            }   
             }
         }
         function horisontalsjekker2(array){
@@ -111,9 +115,11 @@
             if(array[3] == "x" && array[6] == "x" && array[9] == "x"){
                 alert(array[0]+" har vunnet!");
             }
-            if(spillbrett.length == 0){
+            else{
+                if(spillbrett.length == 0){
                 alert("Ingen vant");
                 exit();
+            }   
             }
         }
         
