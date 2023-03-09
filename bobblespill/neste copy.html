@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        background-color: lightslategrey;
+    }
+
+    .verktoyShop {
+        position: absolute;
+        right: 0px;
+        height: 10%;
+        width: 20%;
+        border: 5px solid gainsboro;
+    }
+</style>
+
+<body>
+    <input id="fargeValg" type="color">
+    <p id="poengsum" style="color: black; position: absolute; bottom: 0; font-size:xx-large;">0</p>
+    <div class="verktoyShop" style="height: 5%; top: 0;" id="shop1" style="top: 0;">Shop</div>
+
+    <!-- Disse div-elementene er div elementene i butikken. Hver oppgradering har 1 div.
+    Hver div har data-ekstrapoeng, som bestemmer hvor mange ekstra poeng spilleren skal få per sprukket prikk per oppgradering, og data-pris, som bestemmer hvor mye oppgraderingen koster.
+    Hvert div-elmeent har en knapp, denne knappen oppgir id-en til div-elementet som en parameter.-->
+    <div data-ekstrapoeng="1" data-pris="100" class="verktoyShop" id="shop2" style="top: 5%;">Grandma <button
+            onclick="buy(document.getElementById('shop2'))">Kjøp</button> <br> Denne oppgraderingen gir deg 1 poeng
+        ekstra per bobble som blir sprukket. <br> Pris: <span id="shop2PrisDisplay">100<span></div>
+    <div data-ekstrapoeng="5" data-pris="1000" class="verktoyShop" id="shop3" style="top: 15%;">Bubble Shooter <button
+            onclick="buy(document.getElementById('shop3'))">Kjøp</button> <br> Denne oppgraderingen gir deg 5 poeng
+        ekstra per bobble som blir sprukket. <br> Pris: <span id="shop3PrisDisplay">1000<span></div>
+    <div data-ekstrapoeng="10" data-pris="5000" class="verktoyShop" id="shop4" style="top: 25%;">Bubble Shooter <button
+            onclick="buy(document.getElementById('shop4'))">Kjøp</button> <br> Denne oppgraderingen gir deg 5 poeng
+        ekstra per bobble som blir sprukket. <br> Pris: <span id="shop4PrisDisplay">5000<span></div>
+</body>
+
+<script>
+    var ny = true;
+    var poeng = 0;
+    var fargeValg = document.getElementById("fargeValg");
+
+    /* Denne funksjonen kjøres hver gang nettsiden blir trykket på.
+    Funksjonen lager et nytt div-element der hvor du trykket med musepekeren.
+    Så oppgir vi hvordan vi vil at elementet skal se ut.
+    Så sier vi at hvis en musepeker kommer inn på elementer, så skal den kjøre fjern funksjonen.
+    Deretter vises div-elementet på skjermen. */
+
+    window.onclick = function (event) {
+        ny = true;
+        var mittElement = document.createElement("div");
+        mittElement.style.top = event.clientY - 25 + "px";
+        mittElement.style.left = event.clientX - 25 + "px";
+        mittElement.style.borderRadius = "50%";
+        mittElement.style.width = "50px";
+        mittElement.style.height = "50px";
+        mittElement.style.backgroundColor = fargeValg.value;
+        mittElement.onmouseenter = fjern;
+        document.body.appendChild(mittElement);
+    }
+    var plusspoeng = 1;
+    /* Denne funksjonen blir kjørt når musepekeren kommer over rundingene.
+    Den sjekker om rundingen er ny, hvis den ikke er det så får spilleren et ekstra poeng og bobblen animeres bort
+    Det spilles av en lyd når bobbelen blir sprukket.
+    Så fjernes elementet */
+
+    var fjern = function (evt) {
+        evt.stopPropagation();
+        if (!ny) {
+            poeng = poeng + plusspoeng;
+            document.getElementById("poengsum").innerHTML = poeng;
+            var minAnim = evt.target.animate([{ transform: "scale(1)" }, { transform: "scale(2)" }], 50);
+            minAnim.onfinish = function () {
+                var audio = new Audio('./pick-92276.mp3');
+                audio.play();
+                document.body.removeChild(evt.target);
+            }
+        }
+        ny = false;
+    }
+
+
+    /* definerer elementene i butikken til shopX */
+    shop1 = document.getElementById("shop1");
+    shop2 = document.getElementById("shop2");
+    shop3 = document.getElementById("shop3");
+    shop4 = document.getElementById("shop4");
+
+
+    /* Disse funksjonene som inneholder evt.stopPropagation() gjør slik at elementene ikke får en bobble oppå seg
+    når de blir trykket på */
+
+    fargeValg.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+
+    shop1.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+    shop2.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+    shop3.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+    shop4.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+
+
+
+    /* De første variablene som ender på "Pris" definerer prisen på en oppgradering man kan kjøpe. Disse kjøper man for å få ekstra poeng.
+    De variablene som ender på "EkstraPoeng" definerer hvor mange ekstra poeng man skal få hver gang en bobble blir sprukket etter at oppgraderingen har blitt kjøpt.
+    Funksjonen buy() er en funksjon som blir kjørt når noen trykker på "Kjøp" for en oppgradering.
+    Funksjonen sjekker om spilleren har nok poeng til å kjøpe oppgraderingen.
+    Hvis dette er sant, så mister spilleren poeng lik prisen av oppgraderingen.
+    plusspoeng variabelen, som forteller oss hvor mye spilleren skal tjene per gang en bobble blir sprukket, blir oppdatert. Den blir større i forhold til hvor mye oppgraderingen skal gi deg i ekstra poeng, dette betyr at nå vil spilleren tjene f.eks grandmaEkstraPoeng poeng mer per bobble.
+    Deretter blir prisen på en oppgradering økt med 10%.
+    Så oppdateres elementet som viser poengene til spilleren, slik at spilleren ser hvor mye poeng spilleren har igjen etter kjøpet */
+
+
+    function buy(detteElementet) {
+        console.log(detteElementet)
+
+        oppgraderingspris = detteElementet.getAttribute("data-pris");
+        oppgraderingsEkstrapoeng = detteElementet.getAttribute("data-ekstrapoeng");
+        console.log(oppgraderingsEkstrapoeng)
+        console.log(oppgraderingspris)
+        if (poeng >= Number(detteElementet.getAttribute("data-pris"))) {
+            poeng = poeng - Number(oppgraderingspris);
+            plusspoeng = plusspoeng + Number(oppgraderingsEkstrapoeng);
+            oppgraderingspris = Number(oppgraderingspris) + (Number(oppgraderingspris) * 0.10);
+            document.getElementById(detteElementet.getAttribute("id") + "PrisDisplay").innerHTML = oppgraderingspris;
+            document.getElementById("poengsum").innerHTML = poeng;
+            console.log(oppgraderingspris);
+            detteElementet.setAttribute("data-pris", Number(oppgraderingspris));
+
+        }
+    }
+</script>
+
+</html>
