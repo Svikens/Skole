@@ -172,8 +172,8 @@
 
             <label id="fargePaaRammen" style="visibility: hidden;"> <span style="position: absolute; bottom: 10vh;">Farge på rammen</span>
                 <input style="position: absolute; bottom: 10vh; right: 3.2vw;"
-                    onkeyup="document.getElementById('visittkortet').style.borderColor = document.getElementById('fargePaaRammenInput').value"
-                    type="number" id="fargePaaRammenInput">
+                    onkeyup="document.getElementById('visittkortet').style.borderColor = String(document.getElementById('fargePaaRammenInput').value)"
+                    type="text" id="fargePaaRammenInput">
             </label>
             <label id="typeRammee" style="visibility: hidden;"> <span style="position: absolute; bottom: 13vh;">Type Ramme</span>
                 <form>
