@@ -6,12 +6,12 @@ const persons = {
       "telefonnummer": "92874631",
       "forerkort": false,
       "fodselsdato": "26.12.2005",
-      "farge": "blue",
-      "borderfarge": "red"
+      "farge": "orange",
+      "borderfarge": "White"
     },
     "Eirik Djup": {
         "navn": "Eirik Djup",
-        "stilling": "Barnehageansatt",
+        "stilling": "",
         "kjonn": "Mann",
         "telefonnummer": "82859323",
         "forerkort": true,
