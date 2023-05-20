@@ -81,6 +81,9 @@ var posisjonsLagring = [[], [], [], [], [], [], []];
 
 var plasseringsLagringToggle = 0;
 function plasserAutomatisk() {
+    console.log({'{ secrets.VARIABELNAVN }}');
+    console.log({{ secrets.VARIABELNAVN }});
+    console.log(process.env.KEY);
     navnH1EL = document.getElementById("navnH1");
     stillingH2 = document.getElementById("stillingH2");
     kjonnH3EL = document.getElementById("kjonnH3");
