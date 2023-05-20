@@ -84,7 +84,7 @@ function plasserAutomatisk() {
     console.log(process.env.KEY);
     const key = process.env.KEY;
     console.log("KEY: " + key);
-    console.log("DET VIRKER");
+    console.log("IT works");
     navnH1EL = document.getElementById("navnH1");
     stillingH2 = document.getElementById("stillingH2");
     kjonnH3EL = document.getElementById("kjonnH3");
