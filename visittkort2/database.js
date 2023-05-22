@@ -157,12 +157,9 @@ async function lagrePerson() {
     var kortHoyde;
     var ramme1;
     var ramme2;
+    
   
     var autentikasjonsTokenSjekker = await hentAutentikasjonsToken(loggetInnBrukernavn, "autentikasjonsToken");
-  
-    console.log(autentikasjonsToken);
-    console.log(autentikasjonsTokenSjekker);
-    console.log(autentikasjonsToken == autentikasjonsTokenSjekker);
   
     if (autentikasjonsToken == autentikasjonsTokenSjekker) {
       var hvorInformasjonenSkalSendes = personsDatabaseDB.child(name);
@@ -264,7 +261,7 @@ async function lagrePerson() {
         const data = snapshot.val();
   
         
-        return data[name]["fodelsdato"];
+        return data[name]["fodselsdato"];
   })
       .catch((error) => {
         console.error(error);
@@ -291,6 +288,85 @@ async function lagrePerson() {
       .catch((error) => {
         console.error(error);
   });
+  var navnSkriftsstorrelse = document.getElementById('navnH1header').style.fontSize || await personsDatabaseDB.once("value")
+      .then((snapshot) => {
+        
+        const data = snapshot.val();
+  
+        
+        return data[name]["navnSkriftsstorrelse"];
+  })
+      .catch((error) => {
+        console.error(error);
+  });
+  console.log(document.getElementById('navnH1header').style.fontSize);
+  var stillingSkriftsstorrelse = document.getElementById('stillingH2header').style.fontSize || await personsDatabaseDB.once("value")
+      .then((snapshot) => {
+        
+        const data = snapshot.val();
+  
+        
+        return data[name]["stillingSkriftsstorrelse"];
+  })
+      .catch((error) => {
+        console.error(error);
+  });
+  var stillingSkriftsstorrelse = document.getElementById('stillingH2header').style.fontSize || await personsDatabaseDB.once("value")
+      .then((snapshot) => {
+        
+        const data = snapshot.val();
+  
+        
+        return data[name]["stillingSkriftsstorrelse"];
+  })
+      .catch((error) => {
+        console.error(error);
+  });
+  var kjonnSkriftsstorrelse = document.getElementById('kjonnH3header').style.fontSize || await personsDatabaseDB.once("value")
+      .then((snapshot) => {
+        
+        const data = snapshot.val();
+  
+        
+        return data[name]["kjonnSkriftsstorrelse"];
+  })
+      .catch((error) => {
+        console.error(error);
+  });
+  var telefonnummerSkriftsstorrelse = document.getElementById('telefonnummerH3header').style.fontSize || await personsDatabaseDB.once("value")
+      .then((snapshot) => {
+        
+        const data = snapshot.val();
+  
+        
+        return data[name]["telefonnummerSkriftsstorrelse"];
+  })
+      .catch((error) => {
+        console.error(error);
+  });
+  var forerkortSkriftsstorrelse = document.getElementById('forerkortH3header').style.fontSize || await personsDatabaseDB.once("value")
+  .then((snapshot) => {
+    
+    const data = snapshot.val();
+
+    
+    return data[name]["forerkortSkriftsstorrelse"];
+})
+  .catch((error) => {
+    console.error(error);
+});
+var fodselsdatoSkriftsstorrelse = document.getElementById('fodselsdatoH3header').style.fontSize || await personsDatabaseDB.once("value")
+  .then((snapshot) => {
+    
+    const data = snapshot.val();
+
+    
+    return data[name]["fodselsdatoSkriftsstorrelse"];
+})
+  .catch((error) => {
+    console.error(error);
+});
+
   
       hvorInformasjonenSkalSendes.set({
         name: navn,
@@ -304,7 +380,13 @@ async function lagrePerson() {
         fodselsdato: fodselsdato,
         kortBredde: kortBredde,
         kortHoyde: kortHoyde,
+        navnSkriftsstorrelse : navnSkriftsstorrelse,
+        stillingSkriftsstorrelse : stillingSkriftsstorrelse,
+        kjonnSkriftsstorrelse : kjonnSkriftsstorrelse,
         autentikasjonsToken: autentikasjonsToken,
+        telefonnummerSkriftsstorrelse : telefonnummerSkriftsstorrelse,
+        forerkortSkriftsstorrelse : forerkortSkriftsstorrelse,
+        fodselsdatoSkriftsstorrelse : fodselsdatoSkriftsstorrelse,
         passord: loggetInnPassord,
       });
     }
@@ -438,7 +520,7 @@ async function personvelger(navnInput) {
         }
       };
       
-      const [navn, stilling, kjonn, telefonnummer, forerkort, fodelsdato, bakgrunnsfarge, ramme1, ramme2, kortBredde, kortHoyde] = await Promise.all([
+      const [navn, stilling, kjonn, telefonnummer, forerkort, fodelsdato, bakgrunnsfarge, ramme1, ramme2, kortBredde, kortHoyde, fodselsdatoSkriftsstorrelse, forerkortSkriftsstorrelse, kjonnSkriftsstorrelse, navnSkriftsstorrelse, stillingSkriftsstorrelse, telefonnummerSkriftsstorrelse] = await Promise.all([
         hentData("name"),
         hentData("job"),
         hentData("kjonn"),
@@ -449,7 +531,13 @@ async function personvelger(navnInput) {
         hentData("ramme1"),
         hentData("ramme2"),
         hentData("kortBredde"),
-        hentData("kortHoyde")
+        hentData("kortHoyde"),
+        hentData("fodselsdatoSkriftsstorrelse"),
+        hentData("forerkortSkriftsstorrelse"),
+        hentData("kjonnSkriftsstorrelse"),
+        hentData("navnSkriftsstorrelse"),
+        hentData("stillingSkriftsstorrelse"),
+        hentData("telefonnummerSkriftsstorrelse")
       ]);
       
 
@@ -471,6 +559,14 @@ async function personvelger(navnInput) {
     else {
         rammevelger('visittkortet', '#FFFFFF');
     }
+    console.log(document.getElementById('forerkortH3'));
+    console.log(document.getElementById('forerkortH3header'))
     document.getElementById('visittkortet').style.width = kortBredde + "vw";
     document.getElementById('visittkortet').style.height = kortHoyde + "vh";
+    document.getElementById('forerkortH3').style.fontSize = forerkortSkriftsstorrelse;
+    document.getElementById('fodselsdatoH3').style.fontSize = fodselsdatoSkriftsstorrelse;
+    document.getElementById('navnH1').style.fontSize = navnSkriftsstorrelse;
+    document.getElementById('stillingH2').style.fontSize = stillingSkriftsstorrelse;
+    document.getElementById('kjonnH3').style.fontSize = kjonnSkriftsstorrelse;
+    document.getElementById('telefonnummerH3').style.fontSize = telefonnummerSkriftsstorrelse;
   }
