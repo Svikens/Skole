@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Visittkort</title>
+    <link rel="stylesheet" href="./visittkort.css">
+
+
+</head>
+
+<body>
+    <div id="inputElementene" style="position: absolute; left: 1vh; height: 99vh; margin: 0; padding: 0;">
+        <label id="loginTekst">Login</label>
+        <input type="text" placeholder="Brukernavn" id="Brukernavn">
+        <input type="password" placeholder="Passord" id="Passord">
+        <button id="loginnKnapp" onclick="login(document.getElementById('Brukernavn').value, document.getElementById('Passord').value)">Login</button>
+        <button id="lagrePerson" style="display: none;" onclick="lagrePerson()">Lagre informasjonen</button>
+        <button id="logoutKnapp" style="display: none;" onclick="logUt(document.getElementById('Brukernavn').value, document.getElementById('Passord').value)">Log out</button>
+        <input style="display: none;" type="text" placeholder="Ny Bruker Brukernavn" id="brukernavnNyBruker">
+        <input style="display: none;" type="password" placeholder="Ny Bruker Passord" id="passordNyBruker">
+        <button id="nyBruker" style="display: none;" onclick="sjekkNyBruker()">Lag ny bruker</button>
+        <button id="lagNyBrukerKnapp" onclick="nyBruker()">Ny bruker</button>
+        <form>
+            <label>Person</label>
+            <select style="position: absolute; right: 9.1vw;" name="navnVelger" id="navnVelger" oninput="personvelger(document.getElementById('navnVelger').value)">
+            <option></option>
+            </select>
+        </form>
+        <br>
+        <label data-navn="navn">Plasser Automatisk
+            <button onclick="plasserAutomatisk()" style="position: absolute; width: 4vw; height: 2.5vh; right: 4.15vw;">
+            </button>
+        </label>
+        <br><br>
+        <label>Plasser der hvor du plasserte manuelt
+            <button onclick="plasserManueltAutomatisk()"
+                style="position: relative; top: -0.5vh; width: 4vw; height: 2.5vh;"> </button>
+        </label>
+        <br><br>
+        <label>Navn
+            <input onkeyup="oppdaterInformasjon('navnInput','navnH1')" id="navnInput" type="text">
+        </label>
+        <br><br>
+        <form>
+            <label>Kjønn</label>
+            <select style="position: absolute; right: 9.1vw;" name="kjonn" id="kjonn">
+                <option onclick="oppdaterInformasjon('kjonn','kjonnH3header')" value="Gutt">Gutt</option>
+                <option onclick="oppdaterInformasjon('kjonn','kjonnH3header')" value="Jente">Jente</option>
+                <option onclick="oppdaterInformasjon('kjonn','kjonnH3header')" value="Annet">Annet</option>
+            </select>
+        </form>
+        <br>
+        <label>Stilling
+            <input onkeyup="oppdaterInformasjon('jobbtittelInput','stillingH2')" id="jobbtittelInput" type="text">
+        </label>
+        <br><br>
+        <label>Telefonnummer
+            <input onkeyup="if(document.getElementById('telefonnummerInput').value <= 99999999) {oppdaterInformasjon('telefonnummerInput', 'telefonnummerH3');
+            } else {
+                alert('Dette telefonnummeret er ikke gyldig!')}" id="telefonnummerInput" type="number">
+
+        </label>
+        <br><br>
+        <label>Har du førerkort?
+            <input onclick="forerkort('forerkortInput','forerkortH3')" id="forerkortInput" type="checkbox">
+        </label>
+        <br><br>
+        <label>Farge på bakgrunn
+            <input style="position: absolute; right: 5vw;" oninput="fargevelger('bakgrunnsfargeInput', 'visittkortet')"
+                id="bakgrunnsfargeInput" type="color">
+        </label>
+        <button onclick="document.getElementById('visittkortet').style.backgroundColor = 'gray'"
+            style="position: absolute;right: 1vw; ">Reset</button>
+        <br><br>
+        <label>Ramme rundt
+        </label>
+        <input onclick="rammevelger('visittkortet', 'lightgray')" style="position: absolute; right: 5vw;" name="ramme"
+            id="rammerundt1Input" type="radio">
+        <input onclick="rammevelger('visittkortet', '#FFFFFF')" style="position: absolute; right: 11vw;" name="ramme"
+            id="rammerundt2Input" type="radio">
+        <br><br>
+        <label>Fødselsdato
+            <input oninput="oppdaterInformasjon('fodselsdatoInput', 'fodselsdatoH3')" type="date"
+                id="fodselsdatoInput">
+        </label>
+        <br><br>
+        <label>Bilde av personen
+            <input type="file" id="bildeInput">
+        </label>
+        <br><br>
+        <label> Bredde på kortet i vw
+            <input onkeyup="visittkortBredde('breddeInput','visittkortet')" type="number" id="breddeInput">
+        </label>
+        <br><br>
+        <label> Høyde på kortet i vh
+            <input onkeyup="visittkortHoyde('hoydeInput','visittkortet')" type="number" id="hoydeInput">
+        </label>
+        <br><br>
+        <h3 style="margin: 0;">Slå av og på elementer</h3>
+            <div style="display:flex; flex-wrap:wrap;">
+                <label onmouseup="toggleElementer('navnBryter', 'navnH1')" style="margin-right:10px;">
+                    <input id="navnBryter" type="checkbox" />
+                    Navn
+                </label>
+                <label onmouseup="toggleElementer('stillingBryter', 'stillingH2')" style="margin-right:10px;">
+                    <input id="stillingBryter" type="checkbox" />
+                    Stilling
+                </label>
+                <label onmouseup="toggleElementer('kjonnBryter', 'kjonnH3')" style="margin-right:10px;">
+                    <input id="kjonnBryter" type="checkbox" />
+                    Kjønn
+                </label>
+                <label onmouseup="toggleElementer('telefonnummerBryter', 'telefonnummerH3')" style="margin-right:10px;">
+                    <input id="telefonnummerBryter" type="checkbox" />
+                    Telefonnummer
+                </label>
+                <label onmouseup="toggleElementer('forerkortBryter', 'forerkortH3')" style="margin-right:10px;">
+                    <input id="forerkortBryter" type="checkbox" />
+                    Førerkort
+                </label>
+                <label onmouseup="toggleElementer('fodselsdatoBryter', 'fodselsdatoH3')" style="margin-right:10px;">
+                    <input id="fodselsdatoBryter" type="checkbox" />
+                    Fødselsdato
+                </label>
+                <label onmouseup="toggleElementer('bildeBryter', 'bildeIMG')" style="margin-right:10px;">
+                    <input type="checkbox" id="bildeBryter" />
+                    Bilde
+                </label>
+            </div>
+            <br>
+            <h3 style="margin: 0; position: relative; bottom: 2vh;">Endre Egenskaper</h3>
+            <form>
+                <label style="position: absolute;bottom: 9.2vh;">Velg tekst element</label>
+                <select style="position: absolute;right: 3.2vw; width: 12.1vw; bottom: 9vh;" name="element" id="elementEgenskap">
+                    <option onclick="egenskaperVisning('visittkortet')" value="visittkortet">Alle</option>
+                    <option onclick="egenskaperVisning('navnH1header')" value="navnH1header">Navn</option>
+                    <option onclick="egenskaperVisning('stillingH2header')" value="stillingH2header">Stilling</option>
+                    <option onclick="egenskaperVisning('kjonnH3header')" value="kjonnH3header">Kjønn</option>
+                    <option onclick="egenskaperVisning('telefonnummerH3header')" value="telefonnummerH3header">
+                        Telefonnummer</option>
+                    <option onclick="egenskaperVisning('forerkortH3header')" value="forerkortH3header">Førerkort
+                    </option>
+                    <option onclick="egenskaperVisning('fodselsdatoH3header')" value="fodselsdatoH3header">Fødselsdato
+                    </option>
+                    <option onclick="egenskaperVisning('bildeIMGheader')" value="bildeIMGheader">Bilde</option>
+                    <option onclick="egenskaperVisning('rammen')" value="rammen">Rammen</option>
+                </select>
+            </form>
+            <br>
+            <label id="skriftstorrelseLabel" style="position: absolute; bottom: 6.4vh;"> Skriftstørrelse i px
+                <input style="position: absolute; left: 10.4vw;"
+                    onkeyup="egenskapFontSizeEndrer(document.getElementById('elementEgenskap').value, 'skriftstorrelseID')"
+                    type="number" id="skriftstorrelseID">
+            </label>
+            <br>
+            <label id="skriftfargeLabel" style="position: absolute; bottom: 3.4vh;"> Skriftfarge
+                <input style="position: absolute; left: 10.4vw;"
+                    onkeyup="egenskapFontColorEndrer(document.getElementById('elementEgenskap').value, 'skriftfargeID')"
+                    type="text" id="skriftfargeID">
+            </label>
+            <br>
+            <label id="skrifttypeLabel" style="position: absolute; bottom: 0.7vh;"> Font 0-7
+                <input style="position: absolute; left: 10.4vw;"
+                    onkeyup="egenskapFontTypeEndrer(document.getElementById('elementEgenskap').value, 'skrifttypeID')"
+                    type="number" id="skrifttypeID">
+            </label>
+            <br>
+            <label id="breddePaaBilde" style="visibility: hidden;"> <span
+                    style="position: absolute; bottom: 2vh;">Bredde i px</span>
+                <input style="position: absolute; bottom: 2vh;"
+                    onkeyup="document.getElementById('bildeIMGheader').style.width = String(document.getElementById('breddePaaBildeInput').value) + 'px'"
+                    type="text" id="breddePaaBildeInput">
+            </label>
+            <button onclick="bildeBreddeVelger()" id="breddePaaBildeKnapp"
+                style="position: absolute;right: 3vw; bottom: 2vh; visibility: hidden;">Reset</button>
+            <br>
+            <label id="hoydePaaBilde" style="visibility: hidden;"> <span style="position: absolute; bottom: 4.5vh;">Høyde
+                    i px</span>
+                <input style="position: absolute; bottom: 4.5vh;"
+                    onkeyup="document.getElementById('bildeIMGheader').style.height = String(document.getElementById('hoydePaaBildeInput').value) + 'px'"
+                    type="number" id="hoydePaaBildeInput">
+            </label>
+            <button onclick="bildeHoydeVelger()" id="hoydePaaBildeKnapp"
+                style="position: absolute;right: 3vw; bottom: 4.5vh; visibility: hidden;">Reset</button>
+
+            <label id="fargePaaRammen" style="visibility: hidden;"> <span style="position: absolute; bottom: 0.7vh;">Farge på rammen</span>
+                <input style="position: absolute; bottom: 0.4vh; right: 2.2vw;"
+                    onkeyup="document.getElementById('visittkortet').style.borderColor = document.getElementById('fargePaaRammenInput').value"
+                    type="number" id="fargePaaRammenInput">
+            </label>
+            <label id="typeRammee" style="visibility: hidden;"> <span style="position: absolute; bottom: 3.4vh;">Type Ramme</span>
+                <form>
+                    <select style="position: absolute;right: 2.2vw;bottom: 3.4vh; width: 12.1vw;" name="rammeEgenskaper" id="rammeEgenskaper">
+                        <option onclick="rammeTypeVelger()" value="Dotted">Dotted</option>
+                        <option onclick="rammeTypeVelger()" value="Dashed">Dashed</opt ion>
+                        <option onclick="rammeTypeVelger()" value="Solid">Solid</option>
+                        <option onclick="rammeTypeVelger()" value="Double">Double</option>
+                        <option onclick="rammeTypeVelger()" value="Groove">Groove</option>
+                        <option onclick="rammeTypeVelger()" value="Ridge">Ridge</option>
+                        <option onclick="rammeTypeVelger()" value="Inset">Inset</option>
+                        <option onclick="rammeTypeVelger()" value="Outset">Outset</option>
+                        <option onclick="rammeTypeVelger()" value="None">None</option>
+                        <option onclick="rammeTypeVelger()" value="Hidden">Hidden</option>
+                    </select>
+                </form>
+            </label>
+            <label id="tykkelsePaaRammen" style="visibility: hidden;"> <span style="position: absolute; bottom: 6.4vh;">Rammens tykkelse i px</span>
+                <input style="position: absolute; bottom: 6.2vh; right: 2.2vw;"
+                    onkeyup="document.getElementById('visittkortet').style.borderWidth = String(document.getElementById('tykkelsePaaRammenInput').value) + 'px'"
+                    type="number" id="tykkelsePaaRammenInput">
+            </label>
+
+
+    </div>
+    <div style="border: 5px solid #d3d3d3;" id="visittkortet">
+        <div style="position: absolute; top: 1vh; height: 0%;" id="navnH1">
+            <h1 id="navnH1header">Navn</h1>
+        </div>
+        <div style="position: absolute; top: 7vh; height: 0%;" id="stillingH2">
+            <h2 id="stillingH2header">Stilling</h2>
+        </div>
+        <div style="position: absolute;top: 13vh; height: 0%;" id="kjonnH3">
+            <h2 id="kjonnH3header">Kjønn</h2>
+        </div>
+        <div style="position: absolute; top: 19vh; height: 0%;" id="telefonnummerH3">
+            <h2 id="telefonnummerH3header">Telefonnummer</h2>
+        </div>
+        <div style="position: absolute; top: 25vh; height: 0%;" id="forerkortH3">
+            <h2 id="forerkortH3header">Førerkort</h2>
+        </div>
+        <div style="position: absolute; top: 31vh; height: 0%;" id="fodselsdatoH3">
+            <h2 id="fodselsdatoH3header">Fødselsdato</h2>
+        </div>
+        <div style="position: absolute; top: 37vh; height: 0%;" id="bildeIMG">
+            <img id="bildeIMGheader" src="" alt="" style="width: 30vw;height: 30vh;">
+        </div>
+    </div>
+    <script type="module" src="./names.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <!-- Andre Firebase SDK-er du trenger -->    
+    <script src="./database.js"></script>
+</body>
+
+<script src="./names.js"></script>
+<script src="./visittkort.js"></script>
+<script src="./visittkort2copy.js"></script>
+</html>
