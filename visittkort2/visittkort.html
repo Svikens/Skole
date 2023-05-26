@@ -41,7 +41,7 @@
         </label>
         <br><br>
         <label>Navn
-            <input onkeyup="oppdaterInformasjon('navnInput','navnH1')" id="navnInput" type="text">
+            <input onkeyup="oppdaterInformasjon('navnInput','navnH1header')" id="navnInput" type="text">
         </label>
         <br><br>
         <form>
@@ -54,18 +54,18 @@
         </form>
         <br>
         <label>Stilling
-            <input onkeyup="oppdaterInformasjon('jobbtittelInput','stillingH2')" id="jobbtittelInput" type="text">
+            <input onkeyup="oppdaterInformasjon('jobbtittelInput','stillingH2header')" id="jobbtittelInput" type="text">
         </label>
         <br><br>
         <label>Telefonnummer
-            <input onkeyup="if(document.getElementById('telefonnummerInput').value <= 99999999) {oppdaterInformasjon('telefonnummerInput', 'telefonnummerH3');
+            <input onkeyup="if(document.getElementById('telefonnummerInput').value <= 99999999) {oppdaterInformasjon('telefonnummerInput', 'telefonnummerH3header');
             } else {
                 alert('Dette telefonnummeret er ikke gyldig!')}" id="telefonnummerInput" type="number">
 
         </label>
         <br><br>
         <label>Har du førerkort?
-            <input onclick="forerkort('forerkortInput','forerkortH3')" id="forerkortInput" type="checkbox">
+            <input onclick="forerkort('forerkortInput','forerkortH3header')" id="forerkortInput" type="checkbox">
         </label>
         <br><br>
         <label>Farge på bakgrunn
@@ -131,7 +131,7 @@
                 </label>
             </div>
             <br>
-            <h3 style="margin: 0; position: relative; bottom: 2vh;">Endre Egenskaper</h3>
+            <h3 style="margin: 0; position: relative; bottom: 1.7vh;">Endre Egenskaper</h3>
             <form>
                 <label style="position: absolute;bottom: 9.2vh;">Velg tekst element</label>
                 <select style="position: absolute;right: 3.2vw; width: 12.1vw; bottom: 9vh;" name="element" id="elementEgenskap">
@@ -216,25 +216,25 @@
 
     </div>
     <div style="border: 5px solid #d3d3d3;" id="visittkortet">
-        <div style="position: absolute; top: 1vh; height: 0%;" id="navnH1">
-            <h1 id="navnH1header" style="font-size: xx-large;">Navn</h1>
+        <div style="position: absolute; top: 1vh; height: 0%;" id="navnH1" style="font-size: xx-large;">
+            <h1 id="navnH1header" style="font-size: xx-large; position: absolute;">Navn</h1>
         </div>
-        <div style="position: absolute; top: 7vh; height: 0%;" id="stillingH2">
-            <h2 id="stillingH2header" style="font-size: x-large;">Stilling</h2>
+        <div style="position: absolute; top: 7vh; height: 0%;" id="stillingH2" style="font-size: x-large;">
+            <h2 id="stillingH2header" style="font-size: x-large; position: absolute;">Stilling</h2>
         </div>
-        <div style="position: absolute;top: 13vh; height: 0%;" id="kjonnH3">
-            <h2 id="kjonnH3header" style="font-size: x-large;">Kjønn</h2>
+        <div style="position:absolute;top: 13vh; height: 0%;" id="kjonnH3" style="font-size: x-large;">
+            <h2 id="kjonnH3header" style="font-size: x-large; position: absolute;">Kjønn</h2>
         </div>
-        <div style="position: absolute; top: 19vh; height: 0%;" id="telefonnummerH3">
-            <h2 id="telefonnummerH3header" style="font-size: x-large;">Telefonnummer</h2>
+        <div style="position: absolute; top: 19vh; height: 0%;" id="telefonnummerH3" style="font-size: x-large;">
+            <h2 id="telefonnummerH3header" style="font-size: x-large; position: absolute;">Telefonnummer</h2>
         </div>
-        <div style="position: absolute; top: 25vh; height: 0%;" id="forerkortH3">
-            <h2 id="forerkortH3header" style="font-size: x-large;">Førerkort</h2>
+        <div style="position: absolute; top: 25vh; height: 0%;" id="forerkortH3" style="font-size: x-large;">
+            <h2 id="forerkortH3header" style="font-size: x-large; position: absolute;">Førerkort</h2>
         </div>
-        <div style="position: absolute; top: 31vh; height: 0%;" id="fodselsdatoH3">
-            <h2 id="fodselsdatoH3header" style="font-size: x-large;">Fødselsdato</h2>
+        <div style="position: absolute; top: 31vh; height: 0%;" id="fodselsdatoH3" style="font-size: x-large;">
+            <h2 id="fodselsdatoH3header" style="font-size: x-large; position: absolute;">Fødselsdato</h2>
         </div>
-        <div style="position: absolute; top: 37vh; height: 0%;" id="bildeIMG">
+        <div style="position: absolute; top: 37vh; height: 0%;" id="bildeIMG" style="font-size: x-large;">
             <img id="bildeIMGheader" src="" alt="" style="width: 30vw;height: 30vh;">
         </div>
     </div>
