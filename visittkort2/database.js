@@ -976,24 +976,18 @@ async function personvelger(navnInput) {
 
 
   function fraPikslerTilVh(tall) {
-    // Get the viewport dimensions
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   
-    // Calculate the value in viewport units
     var vh = ((tall / viewportHeight) * 100) + "vh";
   
-    // Return the converted values
     console.log(vh);
     return vh;
   }
   function fraPikslerTilVw(tall) {
-    // Get the viewport dimensions
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
   
-    // Calculate the value in viewport units
     var vw = ((tall / viewportWidth) * 100) + "vw";
   
-    // Return the converted values
     return vw;
   }
   
