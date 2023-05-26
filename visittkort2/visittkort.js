@@ -260,7 +260,7 @@ function oppdaterInformasjon(value, elementID) {
     console.log(value);
     console.log(elementID);
     document.getElementById(elementID).innerHTML = document.getElementById(value).value;
-    if(elementID == 'navnH1header') {
+    if(elementID == 'navnH1') {
         forerkort('forerkortInput','forerkortH3header');
     }
 }
@@ -353,6 +353,9 @@ function egenskapFontSizeEndrer(id, value) {
 function egenskapFontColorEndrer(id, value) {
     console.log(document.getElementById(String(value)).value);
     document.getElementById(String(id)).style.color = document.getElementById(String(value)).value;
+}
+function fontSizeEndrer(id, value) {
+    document.getElementById(String(id)).style.fontSize = value;
 }
 
 /*
