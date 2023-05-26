@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Projects</title>
+    <link rel="stylesheet" href="./projekter.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+</head>
+<body style="position: absolute; width: 100%;">
+    <div id="bakgrunnDiv"></div>
+    <div id="div1" style="width: 100%; height: 200vh; background-color: black;position: relative; top: 825px; color: whitesmoke; overflow-x: hidden;">
+        <p style="margin:auto; width: 50%;text-align: center; position: relative;top: 80px;">Welcome to SK Scholar</p>
+        <p id="misjon" style="position: relative;left:5%;top: 200px;opacity: 0;">Our Mission is to be a reflection <br>of God's glory in the world <br>and educate the youth on the <br>fundamentals and grow their faith. </p> <!-- Først ser man bare Our Mission, så loader resten-->
+        <p style="position: relative;float: right;top:300px;right: 5%;">We provide the fundamentals<br> art, math and science<br> and two enrichment classes<br> Visual art and Choir. </p>
+        <a style="position: relative; top: 150vh;left: 48.5%; text-decoration: none;color: whitesmoke;" href="">Join us</a>
+    </div>
+
+
+
+
+
+    <script>
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction(){
+            if (document.body.scrollTop < 400 || document.documentElement.scrollTop < 400) {
+                document.getElementById("misjon").style.opacity = 0;
+            }
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                document.getElementById("misjon").style.opacity = 0.1;
+            }
+            if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
+                document.getElementById("misjon").style.opacity = 0.2;
+            }
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById("misjon").style.opacity = 0.3;
+            }
+            if (document.body.scrollTop > 520 || document.documentElement.scrollTop > 520) {
+                document.getElementById("misjon").style.opacity = 0.4;
+            }
+            if (document.body.scrollTop > 540 || document.documentElement.scrollTop > 540) {
+                document.getElementById("misjon").style.opacity = 0.5;
+            }
+            if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
+                document.getElementById("misjon").style.opacity = 0.6;
+            }
+            if (document.body.scrollTop > 560 || document.documentElement.scrollTop > 560) {
+                document.getElementById("misjon").style.opacity = 0.7;
+            }
+            if (document.body.scrollTop > 570 || document.documentElement.scrollTop > 570) {
+                document.getElementById("misjon").style.opacity = 0.8;
+            }
+            if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+                document.getElementById("misjon").style.opacity = 0.9;
+            }
+            if (document.body.scrollTop > 786 || document.documentElement.scrollTop > 786) {
+                document.getElementById("misjon").style.opacity = 1;
+            }
+        }
+    </script>
+</html>
