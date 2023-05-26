@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN</title>
+    <link rel="stylesheet" href="./learn.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: black;color: whitesmoke;background-image: url(./hodet2-kopi\ 2.png);background-size: 50%;background-repeat: no-repeat;">
+    <div style="height: 800px;width:100%;;"></div>
+    <div style="position: absolute;top:50%;right:6.8vw;">
+        We let God guide us <span id="tekst"> and express himself trough us.</span>
+    </div>
+    <div id="tekst2" style="position:absolute;bottom:0; right: 3vw;height: 388px; width: 421px;opacity: 0;">
+        In 2015, we made our own art, struggling. In 2017, we learned to accept Gods message. Today we express Gods' message trough our art, on top of the art game.   
+        God believed in us. God made us succeed. God gave us all the tools, all we needed to do was paint the canvas. 
+    </div>
+    <div>
+    </div>
+    <div style="height: 800px;width:100%;"></div>
+
+
+
+    <script>
+
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction(){
+            if (document.body.scrollTop < 25 || document.documentElement.scrollTop < 25) {
+                document.getElementById("tekst2").style.opacity = 0;
+                document.getElementById("tekst").style.opacity = 0;
+            }
+            if (document.body.scrollTop > 37 || document.documentElement.scrollTop > 37) {
+                document.getElementById("tekst2").style.opacity = 0.1;
+                document.getElementById("tekst").style.opacity = 0.1;
+            }
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 40) {
+                document.getElementById("tekst2").style.opacity = 0.2;
+                
+                document.getElementById("tekst").style.opacity = 0.2;
+            }
+            if (document.body.scrollTop > 62 || document.documentElement.scrollTop > 52) {
+                document.getElementById("tekst2").style.opacity = 0.3;
+                document.getElementById("tekst").style.opacity = 0.3;
+                
+            }
+            if (document.body.scrollTop > 75 || document.documentElement.scrollTop > 65) {
+                document.getElementById("tekst2").style.opacity = 0.4;
+                document.getElementById("tekst").style.opacity = 0.4;
+                
+            }
+            if (document.body.scrollTop > 87 || document.documentElement.scrollTop > 77) {
+                document.getElementById("tekst2").style.opacity = 0.5;
+                document.getElementById("tekst").style.opacity = 0.5;
+                
+            }
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 90) {
+                document.getElementById("tekst2").style.opacity = 0.6;
+                document.getElementById("tekst").style.opacity = 0.6;
+                
+            }
+            if (document.body.scrollTop > 112 || document.documentElement.scrollTop > 121) {
+                document.getElementById("tekst2").style.opacity = 0.7;
+                document.getElementById("tekst").style.opacity = 0.7;
+                
+            }
+            if (document.body.scrollTop > 125 || document.documentElement.scrollTop > 131) {
+                document.getElementById("tekst2").style.opacity = 0.8;
+                document.getElementById("tekst").style.opacity = 0.8;
+                
+            }
+            if (document.body.scrollTop > 137 || document.documentElement.scrollTop > 140) {
+                document.getElementById("tekst2").style.opacity = 0.9;
+                document.getElementById("tekst").style.opacity = 0.9;
+                
+            }
+            
+            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+                document.getElementById("tekst2").style.opacity = 1;
+                document.getElementById("tekst").style.opacity = 1;
+                
+            }
+
+            
+
+        }
+    </script>
+
+</body>
+</html>
