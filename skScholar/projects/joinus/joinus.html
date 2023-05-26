@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Projects</title>
+    <link rel="stylesheet" href="./joinus.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+</head>
+<body style="position: absolute; width: 100%;">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+
+<div id="form" style="width: 100%; position: absolute; top: 33.6vh;">
+<center>
+<input id="fornavnInput" style="width: 22vw; height:5vh" type="text" placeholder="First Name">
+<input id="etternavnInput" style="width: 22vw; height:5vh"type="text" placeholder="Last Name">
+<br>
+<input id="emailInput" style="width: 44.94vw; height: 5vh;" type="text" placeholder="Email">
+<br>
+<input id="grunnInput" style="width: 44.94vw; height: 3vw;" type="text" placeholder="Why you want to join">
+<br>
+<button onclick="sendDataTilDatabase()" style="width: 45.4vw; height: 2vw; background: none; color: whitesmoke;" type="button">Submit</button>
+</center>
+</div>
+<script>
+    // Import the functions you need from the SDKs you need
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyAUgx-uVVt51oKT5auC7MAKFNWlv2iyhuk",
+    authDomain: "personsdatabase-1.firebaseapp.com",
+    databaseURL: "https://personsdatabase-1-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "personsdatabase-1",
+    storageBucket: "personsdatabase-1.appspot.com",
+    messagingSenderId: "774565114393",
+    appId: "1:774565114393:web:b8579795f11a7a409f7088"
+};
+  
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+  
+  
+var personsDatabaseDB = firebase.database().ref('personsDatabase');
+var fornavnInputValue = document.getElementById('fornavnInput').value;
+var etternavnInputValue = document.getElementById('etternavnInput').value;
+var emailInputValue = document.getElementById('emailInput').value;
+var grunnInputValue = document.getElementById('grunnInput').value;
+var navnNode = fornavnInputValue + etternavnInputValue;
+var hvorInformasjonenSkalSendes = personsDatabaseDB.child('Sindre/forms/' + navnNode).push();
+
+
+function sendDataTilDatabase() {
+   
+    hvorInformasjonenSkalSendes.set({
+        fornavn : fornavnInputValue,
+        etternavn : etternavnInputValue,
+        email : emailInputValue,
+        grunn : grunnInputValue
+        });
+    
+    alert('Din søknad har blitt sendt')
+  
+  }
+
+</script>   
+
+</body>
+</html>
