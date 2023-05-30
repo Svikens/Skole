@@ -719,8 +719,8 @@ async function lagNyBruker() {
     var ramme1 = document.getElementById('rammerundt1Input').checked;
     var ramme2 = document.getElementById('rammerundt2Input').checked;
     var fodselsdato = document.getElementById('fodselsdatoInput').value;
-    var kortBredde = document.getElementById('breddeInput').value;
-    var kortHoyde = document.getElementById('hoydeInput').value;
+    var kortBredde = fraPikslerTilVw(document.getElementById('visittkortet').offsetWidth);
+    var kortHoyde = fraPikslerTilVh(document.getElementById('visittkortet').offsetHeight);
     var bildePosisjonBottom = bildeIMGEL.style.bottom
     var bildePosisjonTop = bildeIMGEL.style.top
     var bildePosisjonLeft = bildeIMGEL.style.left
@@ -819,6 +819,8 @@ async function lagNyBruker() {
         telefonnummerBottom : telefonnummerBottom,
         telefonnummerLeft : telefonnummerLeft,
         telefonnummerRight : telefonnummerRight,
+        kortHoyde : kortHoyde.replace("vh", ""),
+        kortBredde : kortBredde.replace("vw", ""),
         passord: passord,
         autentikasjonsToken: nyAutentikasjonsToken,
         });
